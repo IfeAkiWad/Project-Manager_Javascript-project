@@ -1,6 +1,6 @@
-class CreateAssignments < ActiveRecord::Migration[6.0]
+class CreateProjects < ActiveRecord::Migration[6.0]
   def change
-    create_table :assignments do |t|
+    create_table :projects do |t|
       t.date :started
       t.string :deadline
       t.text :description

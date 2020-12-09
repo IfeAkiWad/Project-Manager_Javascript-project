@@ -1,3 +1,4 @@
 class Developer < ApplicationRecord
-    has_many :assignments
+    has_many :projects
+    
 end
