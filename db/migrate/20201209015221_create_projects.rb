@@ -1,10 +1,11 @@
 class CreateProjects < ActiveRecord::Migration[6.0]
   def change
     create_table :projects do |t|
-      t.string :started
+      t.date :started
       t.string :deadline
-      t.string :description
-      t.string :completed
+      t.text :description
+      t.boolean :completed, :default => false
+      t.references :developers
 
       t.timestamps
     end
