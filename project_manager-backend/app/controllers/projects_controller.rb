@@ -9,6 +9,7 @@ class ProjectsController < ApplicationController
         # if params[:started] == " "
         #     render json: { message: 'Start project' }
         #   end
+        render json: project, except: [:created_at, :updated_at, :developer_id]
     end
 
 end
