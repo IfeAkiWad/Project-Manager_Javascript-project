@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 2020_12_09_015221) do
   end
 
   create_table "projects", force: :cascade do |t|
+    t.string "name"
     t.date "started"
     t.string "deadline"
     t.text "description"
