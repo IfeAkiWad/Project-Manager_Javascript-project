@@ -10,23 +10,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_09_015221) do
-
-  create_table "developers", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "projects", force: :cascade do |t|
-    t.date "started"
-    t.string "deadline"
-    t.text "description"
-    t.boolean "completed", default: false
-    t.integer "developers_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["developers_id"], name: "index_projects_on_developers_id"
-  end
+ActiveRecord::Schema.define(version: 0) do
 
 end
