@@ -1,7 +1,7 @@
 class DevelopersController < ApplicationController
     def index
         developers = Developer.all
-        render json: developers 
+        render json: developers
     end
     
     def show
