@@ -6,6 +6,6 @@ class DevelopersController < ApplicationController
     
     def show
         developer = Developer.find_by(id: params[:id])
-        render json: DeveloperSerializer.new(developer).to_serialized_json
+        render json: DeveloperSerializer.new(project).to_serialized_json
     end
 end
