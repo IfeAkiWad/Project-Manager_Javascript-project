@@ -6,6 +6,6 @@ class DevelopersController < ApplicationController
     
     def show
         developer = Developer.find_by(id: params[:id])
-        render json: developer.to_json(:include => {:projects => {:only => [:name, :started, :deadline, :description, :completed]}}, :except => [:updated_at], :except => [:created_at, :updated_at])
+        render json: DeveloperSerializer.new(developer).to_serialized_json
     end
 end
