@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   # resources :projects, only: [:show, :index]
-  # resources :developers
+  resources :developers, only: [:show, :index]
 
   resources :developers do
     # nested resource for reviews
