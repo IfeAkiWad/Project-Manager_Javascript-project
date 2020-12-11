@@ -3,7 +3,7 @@ class CreateProjects < ActiveRecord::Migration[6.0]
     create_table :projects do |t|
       t.string :name
       t.date :started
-      t.string :deadline
+      t.date :deadline
       t.text :description
       t.boolean :completed, :default => false
       t.integer :developer_id

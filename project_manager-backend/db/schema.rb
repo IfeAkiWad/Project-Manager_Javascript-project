@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 2020_12_09_015221) do
   create_table "projects", force: :cascade do |t|
     t.string "name"
     t.date "started"
-    t.string "deadline"
+    t.date "deadline"
     t.text "description"
     t.boolean "completed", default: false
     t.integer "developer_id"
