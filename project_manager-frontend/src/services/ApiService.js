@@ -3,5 +3,5 @@ class ApiService {
         this.baseURL = baseURL;
     }
 
-    getAllProjects = () => fetch(`${this.baseURL}/projects`).then(response => response.json())
+    getAllProjects = () => fetch(`${this.baseURL}/projects`).then((response) => response.json())
 }
