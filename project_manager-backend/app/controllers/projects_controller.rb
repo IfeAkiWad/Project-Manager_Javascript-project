@@ -3,13 +3,15 @@ class ProjectsController < ApplicationController
     before_action :set_project, only: [:show, :edit, :update]
     
     def index
-        projects = developer.projects
+        projects = Project.all
+        # binding.pry
+        # projects = developer.projects
         render json: projects.to_json(except: [:created_at, :updated_at, :developer_id])
+       
     end
 
     def create
         project = developer.projects.new(project_params) 
-        project.developer = developer #do I even need this?
         project.save
         render_project
     end
@@ -41,12 +43,13 @@ class ProjectsController < ApplicationController
     end
 
     def set_developer
-        developer = developer.find_by_id(params[:developer_id])
+        developer = Developer.find_by_id(params[:developer_id])
     end
 
     def set_project
         project = developer.projects.find_by_id(params[:id])
     end
+
     def project_params
         params.require(:project).permit(:name, :started, :deadline, :description, :completed, :developer_id)
     end
