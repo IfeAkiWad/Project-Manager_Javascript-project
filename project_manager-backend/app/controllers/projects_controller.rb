@@ -1,15 +1,43 @@
 class ProjectsController < ApplicationController
+    before_action :set_developer
+    before_action :set_project, only: [:show, :edit, :update]
+    
     def index
         projects = Project.all
         render json: projects.to_json(except: [:created_at, :updated_at, :developer_id])
     end
 
+    def create
+        project = developer.projects.new(project_params) 
+        project.developer = developer
+        project.save
+        render json: project.to_json(except: [:created_at, :updated_at, :developer_id])
+
     def show
-        project = Project.find_by(id: params[:id])
+        # project = Project.find_by(id: params[:id])
         # if params[:started] == " "
         #     render json: { message: 'Start project' }
         #   end
         render json: project.to_json(except: [:created_at, :updated_at, :developer_id])
+    end
+
+    def edit
+    end
+
+    def update
+    end
+
+    private
+
+    def set_developer
+        developer = developer.find_by_id(params[:developer_id])
+    end
+
+    def set_project
+        project = developer.projects.find_by_id(params[:id])
+    end
+    def project_params
+        params.require(:project).permit(:name, :started, :deadline, :description, :completed)
     end
 
 end
