@@ -27,9 +27,9 @@ class ProjectsController < ApplicationController
     def update # how do I build this using json ???
         if project.update(project_params)
             render_project
-        # else
+        else
             # ???
-            # render edit
+            render json: { message: 'Try again' }
         end
     end
 
