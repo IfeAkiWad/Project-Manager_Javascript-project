@@ -12,6 +12,7 @@ class ProjectsController < ApplicationController
         project.developer = developer #do I even need this?
         project.save
         render_project
+    end
 
     def show
         # project = Project.find_by(id: params[:id])
@@ -47,7 +48,7 @@ class ProjectsController < ApplicationController
         project = developer.projects.find_by_id(params[:id])
     end
     def project_params
-        params.require(:project).permit(:name, :started, :deadline, :description, :completed)
+        params.require(:project).permit(:name, :started, :deadline, :description, :completed, :developer_id)
     end
 
 end
