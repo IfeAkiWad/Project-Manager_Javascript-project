@@ -3,31 +3,41 @@ class ProjectsController < ApplicationController
     before_action :set_project, only: [:show, :edit, :update]
     
     def index
-        projects = Project.all
+        projects = developer.projects
         render json: projects.to_json(except: [:created_at, :updated_at, :developer_id])
     end
 
     def create
         project = developer.projects.new(project_params) 
-        project.developer = developer
+        project.developer = developer #do I even need this?
         project.save
-        render json: project.to_json(except: [:created_at, :updated_at, :developer_id])
+        render_project
 
     def show
         # project = Project.find_by(id: params[:id])
         # if params[:started] == " "
         #     render json: { message: 'Start project' }
         #   end
-        render json: project.to_json(except: [:created_at, :updated_at, :developer_id])
+        render_project
     end
 
     def edit
     end
 
-    def update
+    def update # how do I build this using json ???
+        if project.update(project_params)
+            render_project
+        # else
+            # ???
+            # render edit
+        end
     end
 
     private
+
+    def render_project
+        render json: project.to_json(except: [:created_at, :updated_at, :developer_id])
+    end
 
     def set_developer
         developer = developer.find_by_id(params[:developer_id])
