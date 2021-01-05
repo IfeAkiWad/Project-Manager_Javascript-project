@@ -1,21 +1,27 @@
 class Projects {
-    constructor(name, started, deadline, description, completed) {
-       this.name = name
-       this.started = started
-       this.deadline = deadline
-       this.description = description 
-       this.completed = completed
-    
-    // this.project = project
-    //     console.log(this)
+    constructor(id, name, started, deadline, description, completed) {
+        this.id = id
+        this.name = name
+        this.started = started
+        this.deadline = deadline
+        this.description = description 
+        this.completed = completed
     }
 
-    // class method will use data to instatiate project objects
-    // static getAll() {  
-    //     api.getAllProjects().then((data) => 
-    //         data.forEach(project => new Projects(project))
-    //     );
-    // }
+    // render project instance to DOM
+    renderProject() {
+        let projectsDiv = document.getElementById("projects-container")
 
-    
+        projectsDiv.innerHTML +=
+        `
+        <ul>
+        <h2>Project Name: ${this.name}</h2>
+        <h3>Project Started: ${this.started}</h3>
+        <h3>Project deadline: ${this.deadline}</h3>
+        <h4>Project Description:</h4>
+        <p>${this.description}</p>
+        <h3>Project Completed: ${this.completed}</h3>
+        </ul><br>
+        `
+    }
 }
