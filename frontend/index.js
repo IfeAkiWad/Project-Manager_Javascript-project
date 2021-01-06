@@ -1,4 +1,4 @@
-const BASE_URL = 'http://localhost:3000'
+const BASE_URL = 'http://localhost:3000/developers/3'
 
 document.addEventListener("DOMContentLoaded", () => {
     getAllProjects();
@@ -94,7 +94,7 @@ function submitProjectForm() {
             project.deadline,
             project.description,
             project.completed)
-        p.renderProject
+        p.renderProject()
     })
 }
 
