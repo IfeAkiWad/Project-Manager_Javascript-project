@@ -83,7 +83,7 @@ function submitProjectForm() {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify(project),
+        body: JSON.stringify(console.log(project))
     })
     .then(response => response.json())
     .then(project => {
