@@ -1,7 +1,6 @@
 class ProjectsController < ApplicationController
     before_action :set_project, only: [:show, :edit, :update]
-       # project is nil and doctor is nil
-   
+       # project is nil 
     def index
         @projects = Project.all
             # binding.pry
@@ -10,6 +9,7 @@ class ProjectsController < ApplicationController
     end
    
     def create
+        binding.pry
         @project = Project.create(project_params)
            # @project = @developer.projects.new(project_params) 
             if @project.save
@@ -53,7 +53,7 @@ class ProjectsController < ApplicationController
        end
    
        def project_params
-           params.require(:project).permit(:name, :started, :deadline, :description, :completed)
+           params.require(:project).permit(:name, :started, :deadline, :description, :completed, :developer_id)
        end
 end
    
