@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController
     before_action :set_project, only: [:show, :edit, :update]
-       # project is nil 
+       # project/projects are nil upon creation. param is missing or the value is empty
     def index 
         @projects = Project.all
             if Developer.find_by_id(id: params[:id]) === params[:developer_id]
@@ -47,7 +47,7 @@ class ProjectsController < ApplicationController
     private
    
        def render_project
-           render json: @project.to_json(except: [:created_at, :updated_at])
+           render json: @project, except: [:created_at, :updated_at]
        end
    
        # def set_developer
