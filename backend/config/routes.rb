@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :developers, only: [:show, :index]
   resources :projects
   resources :developers do
-    # nested resource for reviews
+    # nested resource for projects
     resources :projects
   end
 

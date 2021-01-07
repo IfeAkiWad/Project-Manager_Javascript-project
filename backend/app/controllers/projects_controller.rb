@@ -1,22 +1,28 @@
 class ProjectsController < ApplicationController
     before_action :set_project, only: [:show, :edit, :update]
        # project is nil 
-    def index
+    def index 
         @projects = Project.all
+            if Developer.find_by_id(id: params[:id]) === params[:developer_id]
+                render json: @projects.to_json(except: [:created_at, :updated_at])
+            end
             # binding.pry
-            # @projects = @developer.projects #causes error: undefined local variable or method `developer'
-        render json: @projects.to_json(except: [:created_at, :updated_at])
     end
    
+    def new
+        @project = Project.new
+    end
+
     def create
-        binding.pry
-        @project = Project.create(project_params)
-           # @project = @developer.projects.new(project_params) 
-            if @project.save
-               render_project       
-           else
-               render json: @project.errors, status: :unprocessable_entity
-           end
+    binding.pry
+       if Developer.find_by_id(id: params[:id]) === params[:developer_id]
+            @project = Project.new(project_params)
+                if @project.save
+                    render_project       
+                else
+                    render json: @project.errors, status: :unprocessable_entity
+                end
+        end
     end
    
     def show
