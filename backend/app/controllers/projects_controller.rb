@@ -3,9 +3,7 @@ class ProjectsController < ApplicationController
        # project/projects are nil upon creation. param is missing or the value is empty
     def index 
         @projects = Project.all
-            if Developer.find_by_id(id: params[:id]) === params[:developer_id]
-                render json: @projects.to_json(except: [:created_at, :updated_at])
-            end
+            render json: @projects.to_json(except: [:created_at, :updated_at])
             # binding.pry
     end
    
@@ -15,14 +13,12 @@ class ProjectsController < ApplicationController
 
     def create
     binding.pry
-       if Developer.find_by_id(id: params[:id]) === params[:developer_id]
-            @project = Project.new(project_params)
-                if @project.save
-                    render_project       
-                else
-                    render json: @project.errors, status: :unprocessable_entity
-                end
-        end
+        @project = Project.create(project_params)
+            if @project.save
+                render_project       
+            else
+                render json: @project.errors, status: :unprocessable_entity
+            end
     end
    
     def show
