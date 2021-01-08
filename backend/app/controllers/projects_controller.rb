@@ -41,7 +41,8 @@ class ProjectsController < ApplicationController
             render_project
         else
                # ???
-            render json: @project.errors, status: :unprocessable_entity        end
+            render json: @project.errors, status: :unprocessable_entity        
+        end
     end
    
     private
