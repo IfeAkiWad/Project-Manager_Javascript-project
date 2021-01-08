@@ -1,4 +1,4 @@
-const BASE_URL = 'http://localhost:3000/developers/3'
+const BASE_URL = 'http://localhost:3000'
 
 document.addEventListener("DOMContentLoaded", () => {
     getAllProjects();
@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log(getAllProjects())
 })
 
-// fetch projects index
+// fetch projects index = ApiService
 function getAllProjects() {
     fetch(`${BASE_URL}/projects`)
     .then((response) => response.json())
@@ -33,7 +33,7 @@ function getAllProjects() {
 // do something with returned object
 
 
-// create new project
+// create new project = ApiService
 // create form
 function newProjectForm() {
     let projectForm = document.getElementById("project-form")
@@ -77,13 +77,14 @@ function submitProjectForm() {
         completed: completed
     };
     // once form submitted => fetch post request to backend
-    fetch(`${BASE_URL}/projects`, { // error: not processing data
+    // error: not processing data
+    fetch(`${BASE_URL}/projects`, { 
         method: "POST",
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify(console.log(project))
+        body: JSON.stringify( { project } )
     })
     .then(response => response.json())
     .then(project => {
