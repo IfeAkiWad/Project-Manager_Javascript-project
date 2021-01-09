@@ -22,10 +22,6 @@ class ProjectsController < ApplicationController
     end
    
     def show
-           # project = Project.find_by(id: params[:id])
-           # if params[:started] == " "
-           #     render json: { message: 'Start project' }
-           #   end
         render_project
     end
    
