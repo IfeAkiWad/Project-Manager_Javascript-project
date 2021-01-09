@@ -47,7 +47,7 @@ function newProjectForm() {
     <input type="date" id="started"><br><br>
     <label for="deadline">Project Deadline:</label>
     <input type="date" id="deadline"><br><br>
-    <label for="description">Project Description:</label>
+    <label for="description">Project Description:</label><br>
     <textarea id="description"></textarea><br><br>
     <label for="completed">Project Completed:</label>
     <input type="checkbox" id="completed" value=0><br><br>
