@@ -2,9 +2,10 @@ class ProjectsController < ApplicationController
     before_action :set_project, only: [:show, :edit, :update]
        # project/projects are nil upon creation. param is missing or the value is empty
     def index 
+        # binding.pry
         @projects = Project.all
-            render json: @projects.to_json(except: [:created_at, :updated_at])
-            # binding.pry
+        render json: @projects.to_json(include: [:developer], except: [:created_at, :updated_at])
+            
     end
    
     def new
@@ -12,13 +13,14 @@ class ProjectsController < ApplicationController
     end
 
     def create
-    binding.pry
+    # binding.pry
         @project = Project.create(project_params)
             if @project.save
                 render_project       
             else
                 render json: @project.errors, status: :unprocessable_entity
             end
+        binding.pry
     end
    
     def show
@@ -28,11 +30,10 @@ class ProjectsController < ApplicationController
     def edit
     end
    
-    def update # how do I build this using json ???
+    def update 
         if @project.update(project_params)
             render_project
         else
-               # ???
             render json: @project.errors, status: :unprocessable_entity        
         end
     end
