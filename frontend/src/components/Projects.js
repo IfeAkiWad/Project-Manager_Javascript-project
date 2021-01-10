@@ -1,11 +1,12 @@
 class Projects {
-    constructor(id, name, started, deadline, description, completed) {
+    constructor(id, name, started, deadline, description, completed, developer_id) {
         this.id = id
         this.name = name
         this.started = started
         this.deadline = deadline
         this.description = description 
         this.completed = completed
+        this.developer_id = developer_id
     }
 
     // render project instance to DOM

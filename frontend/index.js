@@ -21,7 +21,8 @@ function getAllProjects() {
                 project.started,
                 project.deadline,
                 project.description,
-                project.completed)
+                project.completed,
+                project.developer_id)
             p.renderProject()
         }
     })
@@ -78,14 +79,16 @@ function submitProjectForm() {
     };
     // once form submitted => fetch post request to backend
     // error: not processing data
-    fetch(`${BASE_URL}/projects`, { 
+    fetch(`${BASE_URL}/developers/${this.developer_id}/projects`, { 
         method: "POST",
         headers: {
-            'Accept': 'application/json',
+            // 'Accept': 'application/json',
             'Content-Type': 'application/json',
         },
         body: JSON.stringify( { project } )
+       
     })
+    
     .then(response => response.json())
     .then(project => {
         let p = new Projects(
@@ -94,9 +97,11 @@ function submitProjectForm() {
             project.started,
             project.deadline,
             project.description,
-            project.completed)
+            project.completed,
+            project.developer_id)
         p.renderProject()
     })
+    debugger
 }
 
 
