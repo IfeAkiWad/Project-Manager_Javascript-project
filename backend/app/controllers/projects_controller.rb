@@ -14,13 +14,13 @@ class ProjectsController < ApplicationController
 
     def create
     # binding.pry
-        @project = Project.create(project_params)
+        @project = Project.new(project_params)
             if @project.save
                 render_project       
             else
                 render json: @project.errors, status: :unprocessable_entity
             end
-        binding.pry
+        # binding.pry
     end
    
     def show
