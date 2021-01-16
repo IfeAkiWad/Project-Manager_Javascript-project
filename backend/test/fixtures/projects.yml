@@ -1,13 +1,17 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  started: MyString
-  deadline: MyString
-  description: MyString
-  completed: MyString
+  name: MyString
+  started: 2021-01-12
+  deadline: 2021-01-12
+  description: MyText
+  completed: false
+  developer_id: 1
 
 two:
-  started: MyString
-  deadline: MyString
-  description: MyString
-  completed: MyString
+  name: MyString
+  started: 2021-01-12
+  deadline: 2021-01-12
+  description: MyText
+  completed: false
+  developer_id: 1
