@@ -7,15 +7,36 @@ class Projects {
         this.description = description 
         this.completed = completed
         this.developer_id = developer_id
+        this.renderProject
+    }
+
+    // fetch projects index
+    static getAll() {
+        api.getAllProjects().then(projects => {
+            console.log(projects)
+                    // we do something with the fetched data 
+                    // iterating through the projectS data
+            for (const project of projects) {
+                let p = new Projects(
+                    project.id,     
+                    project.name, 
+                    project.started,
+                    project.deadline,
+                    project.description,
+                    project.completed,
+                    project.developer_id)
+                    p.renderProject()
+                    }
+        })
     }
 
     // render project instance to DOM
-    renderProject() {
-        let projectsDiv = document.getElementById("projects-container")
+        renderProject() {
+            let projectsDiv = document.getElementById("projects-container")
 
-        projectsDiv.innerHTML +=
-        `
-        <ul>
+            projectsDiv.innerHTML +=
+            `
+            <ul>
         <h2>Project Name: ${this.name}</h2>
         <h3>Project Started: ${this.started}</h3>
         <h3>Project deadline: ${this.deadline}</h3>
@@ -24,5 +45,7 @@ class Projects {
         <h3>Project Completed: ${this.completed}</h3>
         </ul><br>
         `
-    }
+        }
+
+    
 }

@@ -3,7 +3,7 @@ const BASE_URL = 'http://localhost:3000'
 document.addEventListener("DOMContentLoaded", () => {
     getAllProjects();
     newProjectForm()
-    console.log(getAllProjects())
+    // console.log(getAllProjects())
 })
 
 // fetch projects index = ApiService
@@ -42,6 +42,10 @@ function newProjectForm() {
     projectForm.innerHTML +=
     `
     <form>
+    <label for="name">Dev Name:</label>
+    <input type="text" id="dev_name"><br><br>
+    <label for="name">Project Name:</label>
+    <input type="text" id="name"><br><br>
     <label for="name">Project Name:</label>
     <input type="text" id="name"><br><br>
     <label for="started">Project Started:</label>
@@ -77,15 +81,16 @@ function submitProjectForm() {
         description: description,
         completed: completed
     };
+    // debugger
     // once form submitted => fetch post request to backend
     // error: not processing data
-    fetch(`${BASE_URL}/developers/${this.developer_id}/projects`, { 
+    fetch(`${BASE_URL}/projects`, { 
         method: "POST",
         headers: {
             // 'Accept': 'application/json',
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify( { project } )
+        body: JSON.stringify(project)
        
     })
     
@@ -101,7 +106,7 @@ function submitProjectForm() {
             project.developer_id)
         p.renderProject()
     })
-    debugger
+    // debugger
 }
 
 
