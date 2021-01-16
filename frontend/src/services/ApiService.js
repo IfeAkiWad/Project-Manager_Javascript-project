@@ -1,8 +1,8 @@
 // class ApiService {
-//     constructor(baseURL) {
-//         this.baseURL = baseURL;
-//     }
-
-//     // fetch projects index
-//     getAllProjects = () => fetch(`${this.baseURL}/projects`).then((response) => response.json())
+   
+//     // fetching projects index
+//      static getAllProjects() {
+//         fetch('http://localhost:3000/projects')
+//         .then((response) => response.json())
+//     }    
 // }

@@ -1,5 +1,5 @@
 class Projects {
-    cconstructor(name, started, deadline, description, completed, developer_Id) {
+    constructor(name, started, deadline, description, completed, developer_Id) {
         this.name = name
         this.started = started
         this.deadline = deadline
@@ -49,6 +49,4 @@ class Projects {
     `
     }
 
-
-    
 }
