@@ -4,7 +4,7 @@ class ProjectsController < ApplicationController
     def index 
         # binding.pry
         @projects = Project.all
-        render json: @projects.to_json(include: [:developer], except: [:created_at, :updated_at])
+        render json: @projects.to_json(except: [:created_at, :updated_at])
             
     end
    
@@ -16,11 +16,12 @@ class ProjectsController < ApplicationController
     # binding.pry
         @project = Project.new(project_params)
             if @project.save
-                render_project       
+                render_project
+                binding.pry       
             else
                 render json: @project.errors, status: :unprocessable_entity
             end
-        # binding.pry
+        
     end
    
     def show
