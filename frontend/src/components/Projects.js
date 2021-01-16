@@ -1,51 +1,54 @@
 class Projects {
-    constructor(id, name, started, deadline, description, completed, developer_id) {
-        this.id = id
+    cconstructor(name, started, deadline, description, completed, developer_Id) {
         this.name = name
         this.started = started
         this.deadline = deadline
-        this.description = description 
+        this.description = description
         this.completed = completed
-        this.developer_id = developer_id
-        this.renderProject
+        this.developer_Id = developer_Id
+        // this.renderProject = renderProject
     }
 
-    // fetch projects index
-    static getAll() {
-        api.getAllProjects().then(projects => {
+        // to get projects index
+    static getAllProjects() {
+        fetch('http://localhost:3000/projects')
+        .then((response) => response.json())
+        .then(projects => {
             console.log(projects)
-                    // we do something with the fetched data 
-                    // iterating through the projectS data
-            for (const project of projects) {
+            // we do something with the fetched data 
+            // iterating through the projectS data
+            for (const project of projects){
                 let p = new Projects(
-                    project.id,     
+                    // project.id,     
                     project.name, 
                     project.started,
                     project.deadline,
                     project.description,
                     project.completed,
                     project.developer_id)
-                    p.renderProject()
-                    }
+                p.renderProject()
+            }
         })
+    
     }
 
     // render project instance to DOM
-        renderProject() {
-            let projectsDiv = document.getElementById("projects-container")
+    renderProject() {
+        let projectsDiv = document.getElementById("projects-container")
 
-            projectsDiv.innerHTML +=
-            `
-            <ul>
-        <h2>Project Name: ${this.name}</h2>
-        <h3>Project Started: ${this.started}</h3>
-        <h3>Project deadline: ${this.deadline}</h3>
-        <h4>Project Description:</h4>
-        <p>${this.description}</p>
-        <h3>Project Completed: ${this.completed}</h3>
-        </ul><br>
+        projectsDiv.innerHTML +=
         `
-        }
+        <ul>
+    <h2>Project Name: ${this.name}</h2>
+    <h3>Project Started: ${this.started}</h3>
+    <h3>Project deadline: ${this.deadline}</h3>
+    <h4>Project Description:</h4>
+    <p>${this.description}</p>
+    <h3>Project Completed: ${this.completed}</h3>
+    </ul><br>
+    `
+    }
+
 
     
 }
