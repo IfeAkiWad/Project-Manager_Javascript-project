@@ -1,62 +1,26 @@
-const BASE_URL = 'http://localhost:3000'
-
-document.addEventListener("DOMContentLoaded", () => {
-    getAllProjects();
+document.addEventListener('DOMContentLoaded', () => {
+    Developer.getDeveloper()
+    Projects.getAllProjects()
     newProjectForm()
-    // console.log(getAllProjects())
 })
 
-// fetch projects index = ApiService
-function getAllProjects() {
-    fetch(`${BASE_URL}/projects`)
-    .then((response) => response.json())
-    .then(projects => {
-        console.log(projects)
-        // we do something with the fetched data 
-        // iterating through the projectS data
-        for (const project of projects){
-            let p = new Projects(
-                project.id,     
-                project.name, 
-                project.started,
-                project.deadline,
-                project.description,
-                project.completed,
-                project.developer_id)
-            p.renderProject()
-        }
-    })
-    
-}
-
-
-// once form submitted => fetch post request to backend
-// do something with returned object
-
-
-// create new project = ApiService
-// create form
 function newProjectForm() {
-    let projectForm = document.getElementById("project-form")
-
+    let projectForm = document.getElementById("project-form")    
+    
     projectForm.innerHTML +=
     `
     <form>
-    <label for="name">Dev Name:</label>
-    <input type="text" id="dev_name"><br><br>
-    <label for="name">Project Name:</label>
-    <input type="text" id="name"><br><br>
     <label for="name">Project Name:</label>
     <input type="text" id="name"><br><br>
     <label for="started">Project Started:</label>
-    <input type="date" id="started"><br><br>
+    <input type="date" class="started" id="started"><br><br>
     <label for="deadline">Project Deadline:</label>
-    <input type="date" id="deadline"><br><br>
+    <input type="date" class="deadline" id="deadline"><br><br>
     <label for="description">Project Description:</label><br>
     <textarea id="description"></textarea><br><br>
     <label for="completed">Project Completed:</label>
-    <input type="checkbox" id="completed" value=0><br><br>
-    <input type="submit" value="New Project">
+    <input type="checkbox" class="checkbox" id="completed" value=0><br><br>
+    <input type="submit" class="submit" value="New Project">
     </form>
     
     `
@@ -65,7 +29,7 @@ function newProjectForm() {
 }
 
 // add event listener 
-function submitProjectForm() {
+function submitProjectForm(event) {
     event.preventDefault();
     let name = document.getElementById("name").value
     let started = document.getElementById("started").value
@@ -73,7 +37,7 @@ function submitProjectForm() {
     let description = document.getElementById("description").value
     let completed = document.getElementById("completed").value
 
-    // console.log(name, started, deadline, description, completed)
+    console.log(name, started, deadline, description, completed)
     let project = {
         name: name, 
         started: started,
@@ -84,8 +48,8 @@ function submitProjectForm() {
     // debugger
     // once form submitted => fetch post request to backend
     // error: not processing data
-    fetch(`${BASE_URL}/projects`, { 
-        method: "POST",
+    fetch('http://localhost:3000/projects', { 
+        method: 'POST',
         headers: {
             // 'Accept': 'application/json',
             'Content-Type': 'application/json',
@@ -93,20 +57,19 @@ function submitProjectForm() {
         body: JSON.stringify(project)
        
     })
-    
     .then(response => response.json())
     .then(project => {
-        let p = new Projects(
-            project.id,     
-            project.name, 
-            project.started,
-            project.deadline,
-            project.description,
-            project.completed,
-            project.developer_id)
+        const {name, started, deadline, description, completed, developer_id} = project
+       let p = new Projects(name, started, deadline, description, completed, developer_id)
+        // let p = new Projects(    
+        //     project.name, 
+        //     project.started,
+        //     project.deadline,
+        //     project.description,
+        //     project.completed)
+        //     // project.developer_id)
         p.renderProject()
+        debugger
     })
-    // debugger
 }
-
 

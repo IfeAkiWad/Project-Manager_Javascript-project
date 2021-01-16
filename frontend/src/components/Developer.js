@@ -1,4 +1,4 @@
-class Developers {
+class Developer {
     constructor(id, dev_name) {
         this.id = id
         this.dev_name = dev_name
