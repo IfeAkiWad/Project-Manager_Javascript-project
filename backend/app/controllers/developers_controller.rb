@@ -1,22 +1,26 @@
 class DevelopersController < ApplicationController
+    before_action :set_developer, only: [:show] 
+
+    # GET /developers
     def index
-        developers = Developer.all
-        render json: developers.to_json(except: [:created_at, :updated_at])
+      @developers = Developer.all
+  
+      render json: @developers, except: [:created_at, :updated_at], include: [:projects]
     end
-    
+  
+    # GET /developers/1
     def show
-        developer = Developer.find_by(id: params[:id])
-        options = {
-            include: [:projects]
-          }
-          render json: DeveloperSerializer.new(developer, options)
-        # render json: DeveloperSerializer.new(developer).to_serialized_json
+      render json: @developer, include: [:projects], except: [:created_at, :updated_at]
+    end
+  
+    private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_developer
+    @developer = Developer.find(params[:id])
     end
 
-    private 
-
+    # Only allow a trusted parameter "white list" through.
     def developer_params
-        params.require(:developer).permit(:dev_name, projects_attribute: [:name, :started, :deadline, :description, :completed])
+    params.require(:developer).permit(:dev_name, projects_attribute: [:name, :started, :deadline, :description, :completed])
     end
-
 end
