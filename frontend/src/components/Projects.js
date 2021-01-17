@@ -37,8 +37,8 @@ class Projects {
         let projectsDiv = document.getElementById("projects-container")
 
         projectsDiv.innerHTML +=
-        `
-        <ul class="ul-project">
+    `
+     <ul class="ul-project">
     <h2>Project Name: ${this.name}</h2>
     <h3>Project Started: ${this.started}</h3>
     <h3>Project deadline: ${this.deadline}</h3>

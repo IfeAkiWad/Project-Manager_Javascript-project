@@ -23,7 +23,6 @@ function newProjectForm() {
     <input type="checkbox" class="checkbox" id="completed" value=0><br><br>
     <input type="submit" class="submit" value="New Project">
     </form>
-    
     `
     // add event listener 
     projectForm.addEventListener("submit", submitProjectForm)
