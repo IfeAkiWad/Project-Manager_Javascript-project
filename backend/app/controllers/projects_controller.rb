@@ -14,7 +14,7 @@ class ProjectsController < ApplicationController
   end
 
   # POST /projects
-  def create
+  def create #ERROR - OBJECT NOT SAVING: project id is nil, and developer_id is nil
     @project = Project.new(project_params)
 
     if @project.save
@@ -22,7 +22,7 @@ class ProjectsController < ApplicationController
     else
       render json: @project.errors, status: :unprocessable_entity
     end
-    # binding.pry
+    binding.pry
   end
 
   # PATCH/PUT /projects/1
