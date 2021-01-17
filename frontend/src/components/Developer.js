@@ -27,9 +27,9 @@ class Developer {
 
         developerDiv.innerHTML +=
         `
-        <ul>
+        
     <h2>Welcome back, ${this.dev_name}!</h2>
-    </ul><br>
+  
     `
     }
 

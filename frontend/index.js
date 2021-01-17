@@ -10,13 +10,14 @@ function newProjectForm() {
     projectForm.innerHTML +=
     `
     <form>
+    <h2 id="form-header"> Manage a new project! </h2><br>
     <label for="name">Project Name:</label>
-    <input type="text" id="name"><br><br>
+    <input type="text" class="name" id="name"><br><br>
     <label for="started">Project Started:</label>
     <input type="date" class="started" id="started"><br><br>
     <label for="deadline">Project Deadline:</label>
     <input type="date" class="deadline" id="deadline"><br><br>
-    <label for="description">Project Description:</label><br>
+    <label for="description">Project Description:</label><br><br>
     <textarea id="description"></textarea><br><br>
     <label for="completed">Project Completed:</label>
     <input type="checkbox" class="checkbox" id="completed" value=0><br><br>
