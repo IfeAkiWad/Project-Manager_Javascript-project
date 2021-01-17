@@ -1,5 +1,6 @@
 class Projects {
-    constructor(name, started, deadline, description, completed, developer_Id) {
+    constructor(id, name, started, deadline, description, completed, developer_Id) {
+        this.id = id
         this.name = name
         this.started = started
         this.deadline = deadline
@@ -19,7 +20,7 @@ class Projects {
             // iterating through the projectS data
             for (const project of projects){
                 let p = new Projects(
-                    // project.id,     
+                    project.id,     
                     project.name, 
                     project.started,
                     project.deadline,

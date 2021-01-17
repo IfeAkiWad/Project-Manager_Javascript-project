@@ -59,16 +59,9 @@ function submitProjectForm(event) {
     })
     .then(response => response.json())
     .then(project => {
-        const {name, started, deadline, description, completed, developer_id} = project
-       let p = new Projects(name, started, deadline, description, completed, developer_id)
-        // let p = new Projects(    
-        //     project.name, 
-        //     project.started,
-        //     project.deadline,
-        //     project.description,
-        //     project.completed)
-        //     // project.developer_id)
-        p.renderProject()
+        const {id, name, started, deadline, description, completed, developer_id} = project
+       let p = new Projects(id, name, started, deadline, description, completed, developer_id)
+            p.renderProject()
         debugger
     })
 }
