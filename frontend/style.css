@@ -1,9 +1,3 @@
-/* header {
-    background-color: #f1f1f1;
-    padding: 20px;
-    text-align: center;
-} */
-
 html, body {
     /* margin:0; 
     padding:0;   */
@@ -15,13 +9,6 @@ body {
     background-color:darkslategray ;
     color:azure;    
 }
-
-
-/* .div1 {
-    width: 300px;
-    height: 100px;
-    border: 1px azure;
-} */
 
 /* developer CSS */
 .div1 {
@@ -50,13 +37,6 @@ form {
     
 }
 
-/* #form-header {
-    text-shadow: 2px 2px 4px #000000;
-    margin-bottom: 15px;  */
-
-
-/* } */
-
 label {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 
@@ -79,7 +59,6 @@ label {
     background-color: #21374d ;
     color: azure;
     font-size: 14px;
-    /* font-family: Georgia, 'Times New Roman', Times, serif */
     padding: 5px 10px;
     border-radius: 4px;
     cursor: pointer;
@@ -100,15 +79,15 @@ textarea {
 
 /* project list CSS */
 .div3, #project-container {
-    background-color:#f8f8f8;
+    background-color:rgba(104, 107, 107, 0.363);
     box-sizing: border-box;
-    border-style:double;
-    border-color: #000000;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);  
+    border-style:inset;
+    border-color: #0b2742;
     border-radius: 4px;
     padding: 12px 10px; 
-    width:100%; 
+    width:99%; 
     overflow-y:scroll; 
-    /* position:relative; */
     height:50%;
 }
 
@@ -125,13 +104,15 @@ textarea {
     margin-right: 50px;
     margin-left: 99px;
     padding: 12px 20px;
-    /* box-sizing: border-box; */
     border: 2px solid #0b2742;    
 }
     
 /* footer */
 footer {
     margin-top: 50px;
+    text-align: center;
+    text-shadow: 1px 1px 2px #000000;
+
 }
 
 
