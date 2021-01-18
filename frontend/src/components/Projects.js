@@ -7,7 +7,6 @@ class Projects {
         this.description = description
         this.completed = completed
         this.developer_Id = developer_Id
-        // this.renderProject = renderProject
     }
 
         // to get projects index
@@ -50,4 +49,11 @@ class Projects {
     `
     }
 
+    // projectComplete() {
+    //     const completed = this.completed
+
+    //     if (completed == 0) {
+    //         return "false"
+    //     }
+    // }
 }

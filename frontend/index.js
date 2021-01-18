@@ -20,7 +20,7 @@ function newProjectForm() {
     <label for="description">Project Description:</label><br><br>
     <textarea id="description"></textarea><br><br>
     <label for="completed">Project Completed:</label>
-    <input type="checkbox" class="checkbox" id="completed" value=0><br><br>
+    <input type="checkbox" class="checkbox" id="completed"><br><br>
     <input type="submit" class="submit" value="New Project">
     </form>
     `
@@ -51,8 +51,8 @@ function submitProjectForm(event) {
     fetch('http://localhost:3000/projects', { 
         method: 'POST',
         headers: {
-            // 'Accept': 'application/json',
             'Content-Type': 'application/json',
+            'Accept': 'application/json'
         },
         body: JSON.stringify(project)
        
