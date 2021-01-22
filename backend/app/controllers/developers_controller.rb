@@ -6,6 +6,7 @@ class DevelopersController < ApplicationController
     @developers = Developer.all
 
     render json: @developers, except: [:created_at, :updated_at], include: [:projects]
+    # binding.pry
   end
 
   # GET /developers/1
