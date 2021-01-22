@@ -1,8 +1,8 @@
 class Developer {
-    constructor(id, dev_name, projects) {
+    constructor(id, dev_name) {
         this.id = id
         this.dev_name = dev_name
-        this.projects = projects
+        // this.projects 
     }
 
     static getDeveloper() {
@@ -16,7 +16,7 @@ class Developer {
                     let d = new Developer(
                         developer.id,     
                         developer.dev_name,
-                        developer.projects
+                        // developer.projects
                     )
                     d.renderDeveloper()
                 }
@@ -36,8 +36,8 @@ class Developer {
     `
     }
 
-    // devsProjects() {
-
+    // projects() {
+    // debugger
     // }
 
 }

@@ -20,7 +20,7 @@ function newProjectForm() {
     <label for="description">Project Description:</label><br><br>
     <textarea id="description"></textarea><br><br>
     <label for="completed">Project Completed:</label>
-    <input type="checkbox" class="checkbox" id="completed"><br><br>
+    <input type="checkbox" class="checkbox" id="completed" checked disabled><br><br>
     <input type="submit" class="submit" value="New Project">
     </form>
     `
