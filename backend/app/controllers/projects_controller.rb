@@ -1,9 +1,10 @@
 class ProjectsController < ApplicationController
-  before_action :set_developer, :set_project, only: [:show, :update]
+  before_action :set_developer 
+   before_action :set_project, only: [:show, :update]
 
   # GET /projects
   def index
-    set_developer
+    # set_developer
     @projects = @developer.projects
     render json: @projects, except: [:created_at, :updated_at]
   end
@@ -18,19 +19,20 @@ class ProjectsController < ApplicationController
   end
   # POST /project
   def create #FIXED - OBJECT NOT SAVING: project id is nil, and developer_id is nil
-    set_developer
+    # set_developer
     @project = @developer.projects.new(project_params)
-    project_completed
+    # project_completed
     if @project.save
       render json: @project, status: :created, location: @project
     else
       render json: @project.errors, status: :unprocessable_entity
     end
-    # binding.pry
+    binding.pry
   end
 
   # PATCH/PUT /projects/1
   def update
+    @project = @developer.projects
     if @project.update(project_params)
       render json: @project
     else
@@ -54,7 +56,7 @@ class ProjectsController < ApplicationController
     end
 
     def project_completed
-      if params[:completed] === true
+      if params[:completed] == true
           return true
       else
           return false
