@@ -20,8 +20,10 @@ function newProjectForm() {
     <label for="description">Project Description:</label><br><br>
     <textarea id="description"></textarea><br><br>
     <label for="completed">Project Completed:</label>
-    <input type="checkbox" class="checkbox" id="completed" checked disabled><br><br>
+    <input type="checkbox" class="checkbox" id="completed" value="true"><br><br>
+    <input id='checkHidden' type='hidden' value='false' name='testName'>
     <input type="submit" class="submit" value="New Project">
+    
     </form>
     `
     // add event listener 
@@ -62,6 +64,9 @@ function submitProjectForm(event) {
         const {id, name, started, deadline, description, completed, developer_id} = project
        let p = new Projects(id, name, started, deadline, description, completed, developer_id)
             p.renderProject()
-        debugger
+        // debugger
     })
+
+    
 }
+

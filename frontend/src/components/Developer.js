@@ -2,7 +2,6 @@ class Developer {
     constructor(id, dev_name) {
         this.id = id
         this.dev_name = dev_name
-        // this.projects 
     }
 
     static getDeveloper() {
@@ -15,13 +14,11 @@ class Developer {
                 for (const developer of developers){
                     let d = new Developer(
                         developer.id,     
-                        developer.dev_name,
-                        // developer.projects
+                        developer.dev_name
                     )
                     d.renderDeveloper()
                 }
         })
-    
     }
 
     // render developer instance to DOM
@@ -29,15 +26,8 @@ class Developer {
         let developerDiv = document.getElementById("developer-container")
 
         developerDiv.innerHTML +=
-        `
-        
+    ` 
     <h2>Welcome back, ${this.dev_name}!</h2>
-  
     `
     }
-
-    // projects() {
-    // debugger
-    // }
-
 }

@@ -65,6 +65,15 @@ label {
 
 }
 
+.edit {
+    background-color: darkslategray ;
+    color: azure;
+    font-size: 14px;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
 textarea {
     width: 30%;
   height: 150px;
