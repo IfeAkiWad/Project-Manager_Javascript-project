@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     Developer.getDeveloper()
     Projects.getAllProjects()
     newProjectForm()
+    editForm()
 })
 
 function newProjectForm() {
@@ -20,7 +21,7 @@ function newProjectForm() {
     <label for="description">Project Description:</label><br><br>
     <textarea id="description"></textarea><br><br>
     <label for="completed">Project Completed:</label>
-    <input type="checkbox" class="checkbox" id="completed" value="true"><br><br>
+    <input type="checkbox" class="checkbox" id="completed" name="completed" value="true"><br><br>
     <input id='checkHidden' type='hidden' value='false' name='testName'>
     <input type="submit" class="submit" value="New Project">
     
@@ -67,6 +68,16 @@ function submitProjectForm(event) {
         // debugger
     })
 
-    
+   
 }
-
+// edit existinf project: overlay
+function editForm() {
+    let editProject = document.getElementsByClassName('edit')
+    for(i = 0; i < editProject.length; i++) {
+        editProject.addEventListener('click', function(event) {
+            event.preventDefault() 
+            // newProjectForm()
+            console.log(event)
+        } )
+   }
+}
