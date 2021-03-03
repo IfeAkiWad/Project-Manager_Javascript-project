@@ -6,6 +6,9 @@ class ProjectsController < ApplicationController
   def index
     # set_developer
     @projects = @developer.projects
+    # if params[:started].blank?
+    #   puts "Not yet started"
+    # end
     render json: @projects, except: [:created_at, :updated_at]
   end
 
@@ -21,13 +24,16 @@ class ProjectsController < ApplicationController
   def create #FIXED - OBJECT NOT SAVING: project id is nil, and developer_id is nil
     # set_developer
     @project = @developer.projects.new(project_params)
+    # if params[:started].blank?
+    #   puts "Not yet started"
+    # end
     # project_completed
     if @project.save
       render json: @project, status: :created, location: @project
     else
       render json: @project.errors, status: :unprocessable_entity
     end
-    binding.pry
+    # binding.pry
   end
 
   # PATCH/PUT /projects/1
