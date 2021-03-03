@@ -2,8 +2,10 @@ document.addEventListener('DOMContentLoaded', () => {
     Developer.getDeveloper()
     Projects.getAllProjects()
     newProjectForm()
-    editForm()
+    // editProject()
 })
+
+// Below is code that handles all that entails a project form.
 
 function newProjectForm() {
     let projectForm = document.getElementById("project-form")    
@@ -21,7 +23,7 @@ function newProjectForm() {
     <label for="description">Project Description:</label><br><br>
     <textarea id="description"></textarea><br><br>
     <label for="completed">Project Completed:</label>
-    <input type="checkbox" class="checkbox" id="completed" name="completed" value="true"><br><br>
+    <input type="checkbox" class="checkbox" id="completed" name="completed" value="false"><br><br>
     <input id='checkHidden' type='hidden' value='false' name='testName'>
     <input type="submit" class="submit" value="New Project">
     
@@ -31,7 +33,7 @@ function newProjectForm() {
     projectForm.addEventListener("submit", submitProjectForm)
 }
 
-// add event listener 
+// add event listener callback function for newProjectForm()
 function submitProjectForm(event) {
     event.preventDefault();
     let name = document.getElementById("name").value
@@ -71,13 +73,13 @@ function submitProjectForm(event) {
    
 }
 // edit existinf project: overlay
-function editForm() {
-    let editProject = document.getElementsByClassName('edit')
-    for(i = 0; i < editProject.length; i++) {
-        editProject.addEventListener('click', function(event) {
-            event.preventDefault() 
-            // newProjectForm()
-            console.log(event)
-        } )
-   }
-}
+// Will need to append datasets ??? in order to give each project its own id ????? WTF
+// take a look at the Objects lesson
+// function editProject(event) {
+// //edit each project without triggering a page load. 
+//    let projects = document.querySelector("#edit")
+// //     projects.addEventListener('submit', console.log("ifeoluwa"))
+
+// //     event.preventDefault()
+//     console.log(projects)
+// }

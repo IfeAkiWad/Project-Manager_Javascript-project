@@ -7,6 +7,7 @@ class Projects {
         this.description = description
         this.completed = completed
         this.developer_Id = developer_Id
+        // this.editProject
     }
 
         // to get projects index
@@ -27,10 +28,23 @@ class Projects {
                     project.completed,
                     project.developer_id)
                 p.renderProject()
+                // p.editProject()
             }
+
         })
     
     }
+
+    // editProject(event) {
+    //     // //edit each project without triggering a page load. 
+    //     // this.preventDefault()
+   
+    //     let projects = document.querySelector("#edit")
+    //         projects.addEventListener('click', console.log("ifeoluwa"))
+        
+    //         // console.log(projects)
+    //     // }
+    // }
 
     // render project instance to DOM
     renderProject() {
@@ -45,44 +59,27 @@ class Projects {
         <h4>Project Description:</h4>
         <p>${this.description}</p>
         <h3>Project Completed: ${this.completed}</h3><br>
-        <input type="submit" class="edit" value="Edit Project">
+        <input type="submit" class="edit" id="edit" value="Edit Project">
     </ul><br>
     `
-    }   
 
-    // updateProjectForm(event) {
-    //     event.preventDefault();
-    //     let name = document.getElementById("name").value
-    //     let started = document.getElementById("started").value
-    //     let deadline = document.getElementById("deadline").value
-    //     let description = document.getElementById("description").value
-    //     let completed = document.getElementById("completed").value
-        
-    //     console.log(name, started, deadline, description, completed)
-    //     let project = {
-    //         name: name, 
-    //         started: started,
-    //         deadline: deadline,
-    //         description: description,
-    //         completed: completed
-    //     };
-    
-    //     // once form submitted => fetch PATCH request to backend
-    //     fetch('http://localhost:3000/projects', { 
-    //         method: 'PATCH',
-    //         headers: {
-    //             'Content-Type': 'application/json',
-    //             'Accept': 'application/json'
-    //         },
-    //         body: JSON.stringify(project)
-           
-    //     })
-    //     .then(response => response.json())
-    //     .then(project => {
-    //         const {id, name, started, deadline, description, completed, developer_id} = project
-    //        let p = new Projects(id, name, started, deadline, description, completed, developer_id)
-    //             p.renderProject()
+    // first try to make this element iterable by creating an array from this: make a class array, ie: node list. Because for some reason it is only grabbing one element.
+    // if that doesn't work, continue working with the botton for that one element, then figure out how to apply it to the others as an array.
+    let projects = Array.from(document.getElementsByClassName(".edit"))
+    // projects.forEach((project) => {
+    //     project.addEventListener('click', (e) => {
+    //         console.log(projects)
+    //     }
     //         // debugger
-    //     })
-    // }
+    //     )})
+        console.log(projects)
+   
+    
+      
+}
+
+// function editProject() {
+//     console.log("ifeoluwa")
+//     let projects = document.querySelector("#edit")
+    
 }
