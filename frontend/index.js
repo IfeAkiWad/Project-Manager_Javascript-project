@@ -2,7 +2,8 @@ document.addEventListener('DOMContentLoaded', () => {
     Developer.getDeveloper()
     Projects.getAllProjects()
     newProjectForm()
-    // editProject()
+    Projects.updateProject()
+    
 })
 
 // Below is code that handles all that entails a project form.

@@ -7,7 +7,7 @@ class Projects {
         this.description = description
         this.completed = completed
         this.developer_Id = developer_Id
-        // this.editProject
+        this.editProject
     }
 
         // to get projects index
@@ -65,21 +65,61 @@ class Projects {
 
     // first try to make this element iterable by creating an array from this: make a class array, ie: node list. Because for some reason it is only grabbing one element.
     // if that doesn't work, continue working with the botton for that one element, then figure out how to apply it to the others as an array.
-    let projects = Array.from(document.getElementsByClassName(".edit"))
+    
     // projects.forEach((project) => {
-    //     project.addEventListener('click', (e) => {
-    //         console.log(projects)
-    //     }
+    //     
     //         // debugger
     //     )})
-        console.log(projects)
+        // console.log(projects)
+    }
    
-    
+    editProject(event) {
+        // the button element wasn't iterable nor was it accessible for all the project ul;
+        // therefore, the the button element was turned into an empty array. The projects were then 
+        // pushed into the empty button array.
+        event.preventDefault()
+        let projects = Array.from(document.getElementsByClassName("edit"))
+        let projCollection = document.getElementsByClassName("ul-project")
+        projects.push(projCollection)
+        projects.forEach(project => project.addEventListener('click', updateProject()))
+            
+    }
+
+    static updateProject(event) {
+        event.preventDefault();
+        let name = document.getElementById("name").value
+        let started = document.getElementById("started").value
+        let deadline = document.getElementById("deadline").value
+        let description = document.getElementById("description").value
+        let completed = document.getElementById("completed").value
+
+        console.log(name, started, deadline, description, completed)
+        let project = {
+            name: name, 
+            started: started,
+            deadline: deadline,
+            description: description,
+            completed: completed
+        };
+        // debugger
+        fetch('http://localhost:3000/projects', { 
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify(project)
+            
+        })
+        .then(response => response.json())
+        .then(project => {
+            const {id, name, started, deadline, description, completed, developer_id} = project
+        let p = new Projects(id, name, started, deadline, description, completed, developer_id)
+                p.renderProject()
+            // debugger
+        })
+    }
       
 }
 
-// function editProject() {
-//     console.log("ifeoluwa")
-//     let projects = document.querySelector("#edit")
     
-}
