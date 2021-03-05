@@ -5,7 +5,6 @@ class CreateProjects < ActiveRecord::Migration[6.0]
       t.date :started
       t.date :deadline
       t.text :description
-      t.boolean :completed, :default => false
       t.integer :developer_id
 
       t.timestamps

@@ -23,7 +23,6 @@ ActiveRecord::Schema.define(version: 2021_01_12_223614) do
     t.date "started"
     t.date "deadline"
     t.text "description"
-    t.boolean "completed", default: false
     t.integer "developer_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
