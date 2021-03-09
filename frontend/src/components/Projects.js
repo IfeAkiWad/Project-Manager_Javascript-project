@@ -1,13 +1,13 @@
 class Projects {
-    constructor(id, name, started, deadline, description, completed, developer_Id) {
+    constructor(id, name, started, deadline, description, developer_Id) {
         this.id = id
         this.name = name
         this.started = started
         this.deadline = deadline
         this.description = description
-        this.completed = completed
         this.developer_Id = developer_Id
-        this.editProject
+        this.renderProject()
+        this.editProject()
     }
 
         // to get projects index
@@ -25,7 +25,6 @@ class Projects {
                     project.started,
                     project.deadline,
                     project.description,
-                    project.completed,
                     project.developer_id)
                 p.renderProject()
                 // p.editProject()
@@ -58,8 +57,7 @@ class Projects {
         <h3>Project deadline: ${this.deadline}</h3>
         <h4>Project Description:</h4>
         <p>${this.description}</p>
-        <h3>Project Completed: ${this.completed}</h3><br>
-        <input type="submit" class="edit" id="edit" value="Edit Project">
+        <input type="submit" data-id=${this.id} class="edit" id="edit" value="Edit Project">
     </ul><br>
     `
 
@@ -73,52 +71,54 @@ class Projects {
         // console.log(projects)
     }
    
-    editProject(event) {
-        // the button element wasn't iterable nor was it accessible for all the project ul;
-        // therefore, the the button element was turned into an empty array. The projects were then 
-        // pushed into the empty button array.
-        event.preventDefault()
+    editProject() {
+    //     // the button element wasn't iterable nor was it accessible for all the project ul;
+    //     // therefore, the the button element was turned into an empty array. The projects were then 
+    //     // pushed into the empty button array.
+    //     // event.preventDefault()
         let projects = Array.from(document.getElementsByClassName("edit"))
         let projCollection = document.getElementsByClassName("ul-project")
         projects.push(projCollection)
-        projects.forEach(project => project.addEventListener('click', updateProject()))
+        projects.forEach(project => project.addEventListener('click', (event) => {
+            console.log(event)
+        }))
+       
             
     }
 
-    static updateProject(event) {
-        event.preventDefault();
-        let name = document.getElementById("name").value
-        let started = document.getElementById("started").value
-        let deadline = document.getElementById("deadline").value
-        let description = document.getElementById("description").value
-        let completed = document.getElementById("completed").value
+    //  updateProject(event) {
+    //     // event.preventDefault();
+    //     let name = document.getElementById("name").value
+    //     let started = document.getElementById("started").value
+    //     let deadline = document.getElementById("deadline").value
+    //     let description = document.getElementById("description").value
 
-        console.log(name, started, deadline, description, completed)
-        let project = {
-            name: name, 
-            started: started,
-            deadline: deadline,
-            description: description,
-            completed: completed
-        };
-        // debugger
-        fetch('http://localhost:3000/projects', { 
-            method: 'PATCH',
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
-            },
-            body: JSON.stringify(project)
+    //     console.log(name, started, deadline, description)
+    //     let project = {
+    //         name: name, 
+    //         started: started,
+    //         deadline: deadline,
+    //         description: description,
+    //       
+    //     };
+    //     // debugger
+    //     fetch('http://localhost:3000/projects', { 
+    //         method: 'PATCH',
+    //         headers: {
+    //             'Content-Type': 'application/json',
+    //             'Accept': 'application/json'
+    //         },
+    //         body: JSON.stringify(project)
             
-        })
-        .then(response => response.json())
-        .then(project => {
-            const {id, name, started, deadline, description, completed, developer_id} = project
-        let p = new Projects(id, name, started, deadline, description, completed, developer_id)
-                p.renderProject()
-            // debugger
-        })
-    }
+    //     })
+    //     .then(response => response.json())
+    //     .then(project => {
+    //         const {id, name, started, deadline, description, developer_id} = project
+    //     let p = new Projects(id, name, started, deadline, description, developer_id)
+    //             p.renderProject()
+    //         // debugger
+    //     })
+    // }
       
 }
 

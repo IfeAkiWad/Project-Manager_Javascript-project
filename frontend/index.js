@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     Developer.getDeveloper()
     Projects.getAllProjects()
     newProjectForm()
-    Projects.updateProject()
+    
     
 })
 
@@ -23,9 +23,6 @@ function newProjectForm() {
     <input type="date" class="deadline" id="deadline"><br><br>
     <label for="description">Project Description:</label><br><br>
     <textarea id="description"></textarea><br><br>
-    <label for="completed">Project Completed:</label>
-    <input type="checkbox" class="checkbox" id="completed" name="completed" value="false"><br><br>
-    <input id='checkHidden' type='hidden' value='false' name='testName'>
     <input type="submit" class="submit" value="New Project">
     
     </form>
@@ -41,15 +38,13 @@ function submitProjectForm(event) {
     let started = document.getElementById("started").value
     let deadline = document.getElementById("deadline").value
     let description = document.getElementById("description").value
-    let completed = document.getElementById("completed").value
 
-    console.log(name, started, deadline, description, completed)
+    console.log(name, started, deadline, description)
     let project = {
         name: name, 
         started: started,
         deadline: deadline,
-        description: description,
-        completed: completed
+        description: description
     };
     // debugger
     // once form submitted => fetch post request to backend
@@ -65,8 +60,8 @@ function submitProjectForm(event) {
     })
     .then(response => response.json())
     .then(project => {
-        const {id, name, started, deadline, description, completed, developer_id} = project
-       let p = new Projects(id, name, started, deadline, description, completed, developer_id)
+        const {id, name, started, deadline, description, developer_id} = project
+       let p = new Projects(id, name, started, deadline, description, developer_id)
             p.renderProject()
         // debugger
     })
