@@ -1,9 +1,20 @@
+
+
 document.addEventListener('DOMContentLoaded', () => {
     Developer.getDeveloper()
     Projects.getAllProjects()
     newProjectForm()
-    
-    
+    editProject()
+    // to edit each created project object
+    // ERROR - for some reason I cannot access event.target in the console: 'Cannot read property 'target' of undefined'
+
+    // projectParentNode.addEventListener('click', (event) => {
+    //     console.log('is this working?')
+    //     console.log(event)
+    //     // if (event.target === dataset.id) {
+            
+    //     // }
+    // })
 })
 
 // Below is code that handles all that entails a project form.
@@ -67,6 +78,22 @@ function submitProjectForm(event) {
     })
 
    
+}
+
+function editProject() {
+    const projectParentNode = document.getElementById('projects-container')
+    projectParentNode.addEventListener('click', (event) => {
+        console.log('is this working?')
+        console.log(event)
+        const editBtn = document.getElementById('edit')
+        if(editBtn) {
+            editBtn.addEventListener('submit', updateProject)
+        }
+    })
+}
+
+function updateProject(event) {
+    event.preventDefault()
 }
 // edit existinf project: overlay
 // Will need to append datasets ??? in order to give each project its own id ????? WTF

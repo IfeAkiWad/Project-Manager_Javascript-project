@@ -6,8 +6,8 @@ class Projects {
         this.deadline = deadline
         this.description = description
         this.developer_Id = developer_Id
-        this.renderProject()
-        this.editProject()
+        // this.renderProject()
+        this.editProject
     }
 
         // to get projects index
@@ -31,7 +31,7 @@ class Projects {
             }
 
         })
-    
+       
     }
 
     // editProject(event) {
@@ -76,14 +76,19 @@ class Projects {
     //     // therefore, the the button element was turned into an empty array. The projects were then 
     //     // pushed into the empty button array.
     //     // event.preventDefault()
-        let projects = Array.from(document.getElementsByClassName("edit"))
-        let projCollection = document.getElementsByClassName("ul-project")
-        projects.push(projCollection)
-        projects.forEach(project => project.addEventListener('click', (event) => {
-            console.log(event)
-        }))
+        // let projects = Array.from(document.getElementsByClassName("edit"))
+        // let projCollection = document.getElementsByClassName("ul-project")
+        // projects.push(projCollection)
+        // projects.forEach(project => project.addEventListener('submit', (event) => {
+        //     console.log(event)
+        // }))
        
-            
+        // let editBtn = document.getElementsByClassName('edit')
+        // editBtn.addEventListener('submit', (event) => {
+        //     console.log("I'm in there!")
+        //     console.log(event)
+        // })
+
     }
 
     //  updateProject(event) {
