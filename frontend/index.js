@@ -1,30 +1,18 @@
-
-
 document.addEventListener('DOMContentLoaded', () => {
     Developer.getDeveloper()
     Projects.getAllProjects()
     newProjectForm()
     editProject()
-    // to edit each created project object
-    // ERROR - for some reason I cannot access event.target in the console: 'Cannot read property 'target' of undefined'
-
-    // projectParentNode.addEventListener('click', (event) => {
-    //     console.log('is this working?')
-    //     console.log(event)
-    //     // if (event.target === dataset.id) {
-            
-    //     // }
-    // })
 })
 
-// Below is code that handles all that entails a project form.
+// Below is code that handles all that relates to the project form.
 
 function newProjectForm() {
     let projectForm = document.getElementById("project-form")    
     
     projectForm.innerHTML +=
     `
-    <form>
+    <form id='form'>
     <h2 id="form-header"> Manage a new project! </h2><br>
     <label for="name">Project Name:</label>
     <input type="text" class="name" id="name"><br><br>
@@ -42,7 +30,7 @@ function newProjectForm() {
     projectForm.addEventListener("submit", submitProjectForm)
 }
 
-// add event listener callback function for newProjectForm()
+// callback function for newProjectForm()
 function submitProjectForm(event) {
     event.preventDefault();
     let name = document.getElementById("name").value
@@ -57,9 +45,8 @@ function submitProjectForm(event) {
         deadline: deadline,
         description: description
     };
-    // debugger
     // once form submitted => fetch post request to backend
-    // error: not processing data
+    // error: not processing data --- FIXED
     fetch('http://localhost:3000/projects', { 
         method: 'POST',
         headers: {
@@ -74,26 +61,28 @@ function submitProjectForm(event) {
         const {id, name, started, deadline, description, developer_id} = project
        let p = new Projects(id, name, started, deadline, description, developer_id)
             p.renderProject()
-        // debugger
     })
 
    
 }
 
+// edit button for each object
 function editProject() {
     const projectParentNode = document.getElementById('projects-container')
-    projectParentNode.addEventListener('click', (event) => {
+    projectParentNode.addEventListener('click', (event) => { //to access each project's edit button
         console.log('is this working?')
         console.log(event)
         const editBtn = document.getElementById('edit')
         if(editBtn) {
-            editBtn.addEventListener('submit', updateProject)
+            editBtn.addEventListener('click', updateProject(event))
         }
     })
 }
-
+// callback function for editProject()
 function updateProject(event) {
-    event.preventDefault()
+    const updateForm = document.getElementById('form')
+    let userInput = updateForm.value
+
 }
 // edit existinf project: overlay
 // Will need to append datasets ??? in order to give each project its own id ????? WTF
