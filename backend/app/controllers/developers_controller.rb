@@ -6,7 +6,6 @@ class DevelopersController < ApplicationController
     @developers = Developer.all
 
     render json: @developers, except: [:created_at, :updated_at], include: [:projects]
-    # binding.pry
   end
 
   # GET /developers/1
@@ -20,8 +19,8 @@ class DevelopersController < ApplicationController
       @developer = Developer.find(params[:id])
     end
 
-    # Only allow a trusted parameter "white list" through.
+    # Only allow a trusted parameter through.
     def developer_params
-      params.require(:developer).permit(:dev_name, projects_attribute: [:name, :started, :deadline, :description, :completed])
+      params.require(:developer).permit(:dev_name, projects_attribute: [:name, :started, :deadline, :description])
     end
 end

@@ -1,14 +1,10 @@
 class ProjectsController < ApplicationController
   before_action :set_developer 
-   before_action :set_project, only: [:show, :update]
+  before_action :set_project, only: [:show, :update]
 
   # GET /projects
   def index
-    # set_developer
     @projects = @developer.projects
-    # if params[:started].blank?
-    #   puts "Not yet started"
-    # end
     render json: @projects, except: [:created_at, :updated_at]
   end
 
@@ -20,20 +16,15 @@ class ProjectsController < ApplicationController
   def new
     @project = Project.new
   end
+  
   # POST /project
   def create #FIXED - OBJECT NOT SAVING: project id is nil, and developer_id is nil
-    # set_developer
     @project = @developer.projects.new(project_params)
-    # if params[:started].blank?
-    #   puts "Not yet started"
-    # end
-    # project_completed
     if @project.save
       render json: @project, status: :created, location: @project
     else
       render json: @project.errors, status: :unprocessable_entity
     end
-    # binding.pry
   end
 
   # PATCH/PUT /projects/1
@@ -56,16 +47,9 @@ class ProjectsController < ApplicationController
       @developer = Developer.find_by(params[:developer_id])
     end
 
-    # Only allow a trusted parameter "white list" through.
+    # Only allow a trusted parameter through.
     def project_params
       params.require(:project).permit(:name, :started, :deadline, :description, :developer_id)
     end
 
-    def project_completed
-      if params[:completed] == true
-          return true
-      else
-          return false
-      end
-  end
 end
