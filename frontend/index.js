@@ -74,14 +74,27 @@ function editProject() {
         console.log(event)
         const editBtn = document.getElementById('edit')
         if(editBtn) {
-            editBtn.addEventListener('click', updateProject(event))
+            editBtn.addEventListener('submit', updateProject)
         }
     })
 }
 // callback function for editProject()
-function updateProject(event) {
-    const updateForm = document.getElementById('form')
-    let userInput = updateForm.value
+function updateProject() {
+    let name = document.getElementById("name").value
+    let started = document.getElementById("started").value
+    let deadline = document.getElementById("deadline").value
+    let description = document.getElementById("description").value
+    let userInput = {
+        name: name, 
+        started: started,
+        deadline: deadline,
+        description: description
+    }
+    console.log(userInput)
+   let projectContainer = document.querySelector('#project-container')
+   
+   projectContainer.innerHTML += `${userInput}`
+    
 
 }
 // edit existinf project: overlay
