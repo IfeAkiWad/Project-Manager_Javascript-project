@@ -74,7 +74,24 @@ function editProject() {
         console.log(event)
         const editBtn = document.getElementById('edit')
         if(editBtn) {
-            editBtn.addEventListener('submit', updateProject)
+            console.log('inside edit button')
+            let projectsContainer = document.getElementById("projects-container")  
+            projectsContainer.innerHTML +=     
+            `
+            <form id='form'>
+            <label for="name">Project Name:</label>
+            <input type="text" class="name" id="name"><br><br>
+            <label for="started">Project Started:</label>
+            <input type="date" class="started" id="started"><br><br>
+            <label for="deadline">Project Deadline:</label>
+            <input type="date" class="deadline" id="deadline"><br><br>
+            <label for="description">Project Description:</label><br><br>
+            <textarea id="description"></textarea><br><br>
+            <input type="submit" class="submit" value="Update Project">
+            
+            </form>
+            `
+            projectsContainer.addEventListener("submit", updateProject)
         }
     })
 }
@@ -89,11 +106,22 @@ function updateProject() {
         started: started,
         deadline: deadline,
         description: description
-    }
-    console.log(userInput)
-   let projectContainer = document.querySelector('#project-container')
-   
-   projectContainer.innerHTML += `${userInput}`
+    };
+    fetch('http://localhost:3000/projects', { 
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify(userInput)
+        })
+        .then(response => response.json())
+        .then(project => {
+            const {id, name, started, deadline, description, developer_id} = project
+           let p = new Projects(id, name, started, deadline, description, developer_id)
+                p.renderProject()
+        })
+    
     
 
 }
