@@ -50,11 +50,6 @@ label {
 
 }
 
-#completed {
-    cursor: pointer;
-    background-color: #f8f8f8;
-}
-
 .submit {
     background-color: #21374d ;
     color: azure;
@@ -65,7 +60,7 @@ label {
 
 }
 
-.edit {
+.edit, .delete {
     background-color: darkslategray ;
     color: azure;
     font-size: 14px;
