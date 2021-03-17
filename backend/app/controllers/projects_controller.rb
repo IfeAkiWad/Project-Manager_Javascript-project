@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController
   before_action :set_developer 
-  before_action :set_project, only: [:show, :update]
+  before_action :set_project, only: [:show, :update, :destroy]
 
   # GET /projects
   def index
@@ -28,13 +28,21 @@ class ProjectsController < ApplicationController
   end
 
   # PATCH/PUT /projects/1
-  def update
-    @project = @developer.projects
-    if @project.update(project_params)
-      render json: @project
-    else
-      render json: @project.errors, status: :unprocessable_entity
-    end
+  # def update
+  #   # binding.pry
+  #   # @project = @developer.projects
+  #   if @project.update(project_params)
+  #     render json: @project
+  #   else
+  #     render json: @project.errors, status: :unprocessable_entity
+  #   end
+  # binding.pry
+  # end
+
+  def destroy
+    # binding.pry
+    # @project = @developer.projects
+    @project.destroy
   end
 
   private
