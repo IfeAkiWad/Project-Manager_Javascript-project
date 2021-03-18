@@ -5,9 +5,11 @@ document.addEventListener('DOMContentLoaded', () => {
     Projects.deleteProject()
 })
 
+const globalProjectForm = document.getElementById("project-form")
+
 // BELOW HANDLES ALL THAT PERTAINS TO NEW PROJECT FORM
 function newProjectForm() {
-    let projectForm = document.getElementById("project-form")    
+    let projectForm = globalProjectForm    
     
     projectForm.innerHTML +=
     `
@@ -32,11 +34,36 @@ function newProjectForm() {
 
 function submitProjectForm(event) {
     event.preventDefault();
-    window.alert("project managed")
+    let projectForm = globalProjectForm  
+    
     let name = document.getElementById("name").value
+        if(name === "") {
+            window.alert("Project Name cannot be blank!")
+            projectForm.removeAddEventListener('submit', submitProjectForm)
+        }else{
+            window.alert("project managed")
+        }
     let started = document.getElementById("started").value
+        if(started === "") {
+            window.alert("Start date cannot be blank!")
+            projectForm.removeAddEventListener('submit', submitProjectForm)
+        }else{
+            window.alert("project managed")
+        }
     let deadline = document.getElementById("deadline").value
+        if(deadline === "") {
+            window.alert("Deadline date cannot be blank!")
+            projectForm.removeAddEventListener('submit', submitProjectForm)
+        }else{
+            window.alert("project managed")
+        }
     let description = document.getElementById("description").value
+        if(description === "") {
+            window.alert("Description cannot be blank!")
+            projectForm.removeAddEventListener('submit', submitProjectForm)
+        }else{
+            window.alert("project managed")
+        }
 
     console.log(name, started, deadline, description)
     
