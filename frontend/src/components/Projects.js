@@ -46,12 +46,18 @@ class Projects {
             <input type="submit" name="Delete" data-id=${this.id} class="delete" value="Delete Project">
         </ul><br>
         `
+        // projectsDiv.addEventListener('click', (event) => {
+        //     if (document.getElementsByClassName('delete')) this.deleteProject(event)
+            // HOW TO DELETE ELEMENT WITHOUT RELOADING PAGE
+        // })
+        
     }
 
-    static deleteProject() {
+     //delete button
+     static deleteProject() {
         const projectParentNode = document.getElementById('projects-container')
-        projectParentNode.addEventListener('click', (event) => { //to access each project's edit button
-            console.log('is this working?')
+        projectParentNode.addEventListener('click', (event) => { //to access each project's delete button
+            console.log('inside parent node')
             console.log(event)
             const deleteBtn = document.getElementsByClassName('delete')
             if(deleteBtn) {
@@ -67,13 +73,10 @@ class Projects {
                     },
                 })
                 .then(() => {
-                    let projectContainer = document.getElementById('project-container')
+                    let projectContainer = document.querySelector('#project-container') // ERROR: projectContainer null?
                     let project = document.getElementById('project')
-                    projectContainer.innerHTML += removeChild(project)
+                    projectContainer.removeChild(project) //ERROR: Uncaught (in promise) TypeError: Cannot read property 'removeChild' of null
                 })
-                
-                
-                 
             }
         })
     }   

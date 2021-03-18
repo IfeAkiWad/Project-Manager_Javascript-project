@@ -45,6 +45,7 @@ function submitProjectForm(event) {
         deadline: deadline,
         description: description
     };
+
     // once form submitted => fetch post request to backend
     // error: not processing data --- FIXED
     fetch('http://localhost:3000/projects', { 
