@@ -69,14 +69,21 @@ class Projects {
                     method: 'DELETE',
                     headers: {
                         'Content-Type': 'application/json',
-                        'Accept': 'application/json'
-                    },
+                        // 'Accept': 'application/json'
+                    }
                 })
-                .then(() => {
-                    let projectContainer = document.querySelector('#project-container') // ERROR: projectContainer null?
-                    let project = document.getElementById('project')
-                    projectContainer.removeChild(project) //ERROR: Uncaught (in promise) TypeError: Cannot read property 'removeChild' of null
+                .then((response) => {
+                    console.log(response)
+                   return response.json()
                 })
+                .then(project => alert(project))
+                // .then( (project) => {
+                //     console.log(project)
+                //     let projectContainer = document.getElementById('projects-container') // ERROR: projectContainer null?
+                //     // let projectDelete = document.getElementById('project')
+                //     // projectContainer.removeChild(project) //ERROR: Uncaught (in promise) TypeError: Cannot read property 'removeChild' of null
+                //     return project
+                // })
             }
         })
     }   

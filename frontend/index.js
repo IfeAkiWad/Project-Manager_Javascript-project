@@ -32,6 +32,7 @@ function newProjectForm() {
 
 function submitProjectForm(event) {
     event.preventDefault();
+    window.alert("project managed")
     let name = document.getElementById("name").value
     let started = document.getElementById("started").value
     let deadline = document.getElementById("deadline").value
