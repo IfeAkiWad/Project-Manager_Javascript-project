@@ -62,29 +62,21 @@ class Projects {
             const deleteBtn = document.getElementsByClassName('delete')
             if(deleteBtn) {
                 console.log('inside delete button')
-                console.log(event)
-                window.alert("project deleted")
-                const projectId = event.target.dataset.id
-                fetch(`http:localhost:3000/projects/${projectId}`, {
+                // console.log(event)
+                let projectId = parseInt(event.target.dataset.id)
+                let configObj = {
                     method: 'DELETE',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        // 'Accept': 'application/json'
-                    }
+                }
+                fetch(`http:localhost:3000/projects/${projectId}`, configObj)
+                // .then(res => res.json())
+                .then( (project) => {
+                    console.log(project)
+                    // let projectContainer = document.getElementById('projects-container') // ERROR: projectContainer null?
+                    let projectDelete = document.getElementById('project')
+                    projectDelete.remove(document.getElementById(projectId))
                 })
-                .then((response) => {
-                    console.log(response)
-                   return response.json()
-                })
-                .then(project => alert(project))
-                // .then( (project) => {
-                //     console.log(project)
-                //     let projectContainer = document.getElementById('projects-container') // ERROR: projectContainer null?
-                //     // let projectDelete = document.getElementById('project')
-                //     // projectContainer.removeChild(project) //ERROR: Uncaught (in promise) TypeError: Cannot read property 'removeChild' of null
-                //     return project
-                // })
+
             }
-        })
-    }   
+        })  
+    }         
 }
