@@ -59,10 +59,11 @@ class Projects {
         projectParentNode.addEventListener('click', (event) => { //to access each project's delete button
             console.log('inside parent node')
             console.log(event)
-            const deleteBtn = document.getElementsByClassName('delete')
-            if(deleteBtn) {
+            // const deleteBtn = document.getElementsByClassName('delete')
+            let deleteEvent = event.target.className
+            if(deleteEvent === 'delete') {
                 console.log('inside delete button')
-                // console.log(event)
+                console.log(event)
                 let projectId = parseInt(event.target.dataset.id)
                 let configObj = {
                     method: 'DELETE',
