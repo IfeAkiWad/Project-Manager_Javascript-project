@@ -1,15 +1,7 @@
 class Project < ApplicationRecord
     belongs_to :developer
-
-    # def project_completed
-    #     if params[:completed] === true
-    #         return true
-    #     else
-    #         return false
-    #     end
-    # end
-
-    # if params[:started].blank?
-    #     puts "Not yet started"
-    # end
+    validates :name, presence: true
+    validates :started, presence: true
+    validates :deadline, presence: true
+    validates :description, presence: true
 end

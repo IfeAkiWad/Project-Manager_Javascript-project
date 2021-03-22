@@ -27,21 +27,7 @@ class ProjectsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /projects/1
-  # def update
-  #   # binding.pry
-  #   # @project = @developer.projects
-  #   if @project.update(project_params)
-  #     render json: @project
-  #   else
-  #     render json: @project.errors, status: :unprocessable_entity
-  #   end
-  # binding.pry
-  # end
-
   def destroy
-    # binding.pry
-    # @project = @developer.projects
     @project.destroy
   end
 
