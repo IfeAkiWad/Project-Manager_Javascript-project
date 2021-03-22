@@ -14,13 +14,13 @@ function newProjectForm() {
     <form id='form'>
     <h2 id="form-header"> Manage a new project! </h2><br>
     <label for="name">Project Name:</label>
-    <input type="text" class="name" id="name"><br><br>
+    <input type="text" class="name" id="name" required><br><br>
     <label for="started">Project Started:</label>
-    <input type="date" class="started" id="started"><br><br>
+    <input type="date" class="started" id="started" required><br><br>
     <label for="deadline">Project Deadline:</label>
-    <input type="date" class="deadline" id="deadline"><br><br>
+    <input type="date" class="deadline" id="deadline" required><br><br>
     <label for="description">Project Description:</label><br><br>
-    <textarea id="description"></textarea><br><br>
+    <textarea id="description" required></textarea><br><br>
     <input type="submit" class="submit" value="New Project">
     <br><br>
     </form>
