@@ -60,7 +60,7 @@ label {
 
 }
 
-.edit, .delete {
+.delete {
     background-color: darkslategray ;
     color: azure;
     font-size: 14px;

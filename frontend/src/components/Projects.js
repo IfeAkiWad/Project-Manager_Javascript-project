@@ -46,11 +46,6 @@ class Projects {
             <input type="submit" name="Delete" data-id=${this.id} class="delete" value="Delete Project">
         </ul><br>
         `
-        // projectsDiv.addEventListener('click', (event) => {
-        //     if (document.getElementsByClassName('delete')) this.deleteProject(event)
-            // HOW TO DELETE ELEMENT WITHOUT RELOADING PAGE
-        // })
-        
     }
 
      //delete button
@@ -59,7 +54,6 @@ class Projects {
         projectParentNode.addEventListener('click', (event) => { //to access each project's delete button
             console.log('inside parent node')
             console.log(event)
-            // const deleteBtn = document.getElementsByClassName('delete')
             let deleteEvent = event.target.className
             if(deleteEvent === 'delete') {
                 console.log('inside delete button')
@@ -69,10 +63,8 @@ class Projects {
                     method: 'DELETE',
                 }
                 fetch(`http:localhost:3000/projects/${projectId}`, configObj)
-                // .then(res => res.json())
                 .then( (project) => {
                     console.log(project)
-                    // let projectContainer = document.getElementById('projects-container') // ERROR: projectContainer null?
                     let projectDelete = document.getElementById('project')
                     projectDelete.remove(document.getElementById(projectId))
                 })
