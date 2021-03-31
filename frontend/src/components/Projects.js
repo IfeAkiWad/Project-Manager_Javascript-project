@@ -38,14 +38,14 @@ class Projects {
         projectsDiv.innerHTML +=
         `
         <ol class="ul-project" id='project' data-id=${this.id}>
-            <il data-id=${this.id} id="project-il">
+            <li data-id=${this.id} id="project-il">
                 <h2>Project Name: ${this.name}</h2>
                 <h3>Project Started: ${this.started}</h3>
                 <h3>Project deadline: ${this.deadline}</h3>
                 <h4>Project Description:</h4>
                 <p>${this.description}</p>
                 <input type="submit" name="delete" data-id=${this.id} class="delete" value="Delete Project">
-            </il>
+            </li>
         </ol><br>
         `
     }
