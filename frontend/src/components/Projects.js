@@ -37,14 +37,16 @@ class Projects {
 
         projectsDiv.innerHTML +=
         `
-        <ul class="ul-project" id="project">
-            <h2>Project Name: ${this.name}</h2>
-            <h3>Project Started: ${this.started}</h3>
-            <h3>Project deadline: ${this.deadline}</h3>
-            <h4>Project Description:</h4>
-            <p>${this.description}</p>
-            <input type="submit" name="Delete" data-id=${this.id} class="delete" value="Delete Project">
-        </ul><br>
+        <ol class="ul-project" id='project' data-id=${this.id}>
+            <il data-id=${this.id} id="project-il">
+                <h2>Project Name: ${this.name}</h2>
+                <h3>Project Started: ${this.started}</h3>
+                <h3>Project deadline: ${this.deadline}</h3>
+                <h4>Project Description:</h4>
+                <p>${this.description}</p>
+                <input type="submit" name="delete" data-id=${this.id} class="delete" value="Delete Project">
+            </il>
+        </ol><br>
         `
     }
 
@@ -61,8 +63,13 @@ class Projects {
                 let projectId = parseInt(event.target.dataset.id)
                 let configObj = {
                     method: 'DELETE',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    }
                 }
-                fetch(`http:localhost:3000/projects/${projectId}`, configObj)
+                fetch(`http://localhost:3000/projects/${projectId}`, configObj)
+                .then(res => res.json())
                 .then( (project) => {
                     console.log(project)
                     let projectDelete = document.getElementById('project')
