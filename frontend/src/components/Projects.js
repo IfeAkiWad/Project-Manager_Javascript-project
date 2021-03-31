@@ -69,7 +69,7 @@ class Projects {
                     }
                 }
                 fetch(`http://localhost:3000/projects/${projectId}`, configObj)
-                .then(res => res.json())
+                // .then(response => response.json()) //ERROR: commented out due to SyntaxError: Unexpected end of JSON input
                 .then( (project) => {
                     console.log(project)
                     let projectDelete = document.getElementById('project')
