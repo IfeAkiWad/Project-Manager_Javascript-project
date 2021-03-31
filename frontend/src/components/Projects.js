@@ -37,7 +37,7 @@ class Projects {
 
         projectsDiv.innerHTML +=
         `
-        <ol class="ul-project" id='project' data-id=${this.id}>
+        <ul class="ul-project" id='project' data-id=${this.id}>
             <li data-id=${this.id} id="project-il">
                 <h2>Project Name: ${this.name}</h2>
                 <h3>Project Started: ${this.started}</h3>
@@ -46,7 +46,7 @@ class Projects {
                 <p>${this.description}</p>
                 <input type="submit" name="delete" data-id=${this.id} class="delete" value="Delete Project">
             </li>
-        </ol><br>
+        </ul><br>
         `
     }
 
