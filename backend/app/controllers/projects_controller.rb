@@ -29,6 +29,7 @@ class ProjectsController < ApplicationController
 
   def destroy
     @project.destroy
+    render json: {message: "Successfully deleted #{@project.name}!"}
   end
 
   private
