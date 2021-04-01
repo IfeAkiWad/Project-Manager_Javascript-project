@@ -37,8 +37,8 @@ class Projects {
 
         projectsDiv.innerHTML +=
         `
-        <ul class="ul-project" id='project' data-id=${this.id}>
-            <li data-id=${this.id} id="project-${this.id}">
+        <ul class="ul-project" id='project-${this.id}' data-id=${this.id}>
+            <li data-id=${this.id} id="project">
                 <h2>Project Name: ${this.name}</h2>
                 <h3>Project Started: ${this.started}</h3>
                 <h3>Project deadline: ${this.deadline}</h3>
@@ -71,9 +71,10 @@ class Projects {
                 fetch(`http://localhost:3000/projects/${projectId}`, configObj)
                 .then(response => {
                   return response.json()
-                }) //ERROR: commented out due to SyntaxError: Unexpected end of JSON input
+                }) 
                 .then(project => {
                     console.log(project)
+                    alert(project.message)
                     let projectDelete = document.getElementById(`project-${projectId}`)
                     projectDelete.remove()
                 })
