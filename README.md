@@ -8,8 +8,10 @@ Run `bundle install` in the terminal to install all of the necessary gems in the
 
 ## Requirements
 
+Backend: `cd backend`, and frontend: `cd frontend` in the terminal to maneuver through the directory
+
 1. Run `rails db:migrate` and `rails db:seed` to create and seed the database in the backend. 
-2. Run `rails s` to start the rails server in your browser, which would be `localhost:3000`.
+2. Run `rails s`, in the backend, to start the rails server in your browser, which would be `localhost:3000`.
 3. `open index.html` in terminal for frontend opens single page app in the browser.
 
 ## Contributing
