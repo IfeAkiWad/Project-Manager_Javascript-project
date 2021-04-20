@@ -3,6 +3,7 @@ class Developer {
     constructor(id, dev_name) {
         this.id = id
         this.dev_name = dev_name
+        
     }
 
     static getDeveloper() {
@@ -33,13 +34,17 @@ class Developer {
                 `
             developerDiv.appendChild(devDiv)
 
-            devDiv.addEventListener('click', this.devProjects)
+            devDiv.addEventListener('click', (event) => {
+                console.log(event)
+                console.log("inside devProjects")
+                return Projects.all.filter(p => p.developer_id == devDiv.id)
+            })
 
     }
 
-    devProjects(event) {
-        console.log(event)
-        console.log("inside devProjects")
-        return Projects.all.filter(p => p.developer_id == this.id)
-    }
+//     devProjects(event) {
+//         console.log(event)
+//         console.log("inside devProjects")
+//         return Projects.all.filter(p => p.developer_id == this.id)
+//     }
 }
