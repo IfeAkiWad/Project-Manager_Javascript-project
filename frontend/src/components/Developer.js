@@ -36,8 +36,7 @@ class Developer {
 
             devDiv.addEventListener('click', (event) => {
                 console.log(event)
-                console.log("inside devProjects")
-                return Projects.all.filter(p => p.developer_id == devDiv.id)
+                Projects.map(p => p.developer_id == devDiv.id)
             })
 
     }
