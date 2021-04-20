@@ -1,4 +1,5 @@
 class Developer {
+
     constructor(id, dev_name) {
         this.id = id
         this.dev_name = dev_name
@@ -32,8 +33,13 @@ class Developer {
                 `
             developerDiv.appendChild(devDiv)
 
-            devDiv.addEventListener('click', () => {
+            devDiv.addEventListener('click', this.devProjects)
 
-            })
+    }
+
+    devProjects(event) {
+        console.log(event)
+        console.log("inside devProjects")
+        return Projects.all.filter(p => p.developer_id == this.id)
     }
 }
