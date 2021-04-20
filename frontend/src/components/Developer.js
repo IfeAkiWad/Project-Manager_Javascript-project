@@ -24,12 +24,16 @@ class Developer {
     // render developer instance to DOM
     renderDeveloper() {
         let developerDiv = document.getElementById("developer-container")
-        // if (developer equals specific developer id)
-        // then
-        
-            developerDiv.innerHTML +=
+           let devDiv = document.createElement("div")
+           devDiv.id = `${this.id}`
+            devDiv.innerHTML +=
                 ` 
-                <h2>Welcome back, ${this.dev_name}!</h2>
+                <button>Welcome back, ${this.dev_name}!</button>
                 `
+            developerDiv.appendChild(devDiv)
+
+            devDiv.addEventListener('click', () => {
+                
+            })
     }
 }
