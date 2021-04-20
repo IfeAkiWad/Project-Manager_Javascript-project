@@ -24,10 +24,12 @@ class Developer {
     // render developer instance to DOM
     renderDeveloper() {
         let developerDiv = document.getElementById("developer-container")
-
-        developerDiv.innerHTML +=
-    ` 
-    <h2>Welcome back, ${this.dev_name}!</h2>
-    `
+        // if (developer equals specific developer id)
+        // then
+        
+            developerDiv.innerHTML +=
+                ` 
+                <h2>Welcome back, ${this.dev_name}!</h2>
+                `
     }
 }

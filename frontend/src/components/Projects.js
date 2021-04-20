@@ -11,7 +11,7 @@ class Projects {
         // to get projects index
     static getAllProjects() {
         fetch('http://localhost:3000/projects')
-        .then((response) => response.json())
+        .then((response) => response.json()) //returns the content from the response to the request.
         .then(projects => {
             console.log(projects)
             // we do something with the fetched data 
@@ -69,10 +69,10 @@ class Projects {
                     }
                 }
                 fetch(`http://localhost:3000/projects/${projectId}`, configObj)
-                .then(response => {
+                .then(response => { //returns the content from the response.
                   return response.json()
                 }) 
-                .then(project => {
+                .then(project => { // Use this data inside of `json` to do DOM manipulation
                     console.log(project)
                     alert(project.message)
                     let projectDelete = document.getElementById(`project-${projectId}`)

@@ -1,9 +1,9 @@
-document.addEventListener('DOMContentLoaded', () => {
+// docume/nt.addEventListener('DOMContentLoaded', () => { //fires when the initial HTML document has been completely loaded and parsed without being slowed down by images and stylesheets, etc.
     Developer.getDeveloper()
     Projects.getAllProjects()
     newProjectForm()
     Projects.deleteProject()
-})
+///})
 
 // BELOW HANDLES ALL THAT PERTAINS TO NEW PROJECT FORM
 function newProjectForm() {
