@@ -10,11 +10,7 @@ class ProjectsController < ApplicationController
 
   # GET /projects/1
   def show
-    render json: @project,except: [:created_at, :updated_at]
-  end
-
-  def new
-    @project = Project.new
+    render json: @project, except: [:created_at, :updated_at]
   end
   
   # POST /project
@@ -39,7 +35,8 @@ class ProjectsController < ApplicationController
     end
 
     def set_developer
-      @developer = Developer.find_by(params[:developer_id])
+      # @developer = Developer.find_by(params[:developer_id])
+      @developer = Developer.find_by(params[:developer_id]) 
     end
 
     # Only allow a trusted parameter through.
