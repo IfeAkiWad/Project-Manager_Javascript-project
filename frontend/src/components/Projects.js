@@ -1,11 +1,15 @@
 class Projects {
-    constructor(id, name, started, deadline, description, developer_Id) {
+    static all = []
+
+    constructor(id, name, started, deadline, description, developer_id) {
         this.id = id
         this.name = name
         this.started = started
         this.deadline = deadline
         this.description = description
-        this.developer_Id = developer_Id
+        this.developer_id = developer_id
+
+        Projects.all.push(this)
     }
 
         // to get projects index
@@ -33,21 +37,25 @@ class Projects {
 
     // render project instance to DOM
     renderProject() {
-        let projectsDiv = document.getElementById("projects-container")
-
+        let projectsContainer = document.getElementById("projects-container")
+        let projectsDiv = document.createElement(`project-div-${this.developer_id}`)
+        let projectsDivAttr = document.createAttribute('class')
+        projectsDivAttr.value = 'proj-div'
+        projectsDiv.setAttributeNode(projectsDivAttr)
         projectsDiv.innerHTML +=
         `
-        <ul class="ul-project" id='project-${this.id}' data-id=${this.id}>
+        <ul class="ul-project" id='project-${this.id}' data-id=${this.id} data-id=${this.developer_id}>
             <li data-id=${this.id} id="project">
                 <h2>Project Name: ${this.name}</h2>
                 <h3>Project Started: ${this.started}</h3>
-                <h3>Project deadline: ${this.deadline}</h3>
+                <h3>Project deadline: ${this.deadline}</h3> 
                 <h4>Project Description:</h4>
                 <p>${this.description}</p>
                 <input type="submit" name="delete" data-id=${this.id} class="delete" value="Delete Project">
             </li>
         </ul><br>
         `
+        projectsContainer.appendChild(projectsDiv)
     }
 
      //delete button
