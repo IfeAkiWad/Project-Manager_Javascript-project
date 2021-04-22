@@ -5,6 +5,10 @@ class ProjectsController < ApplicationController
   # GET /projects
   def index
     @projects = @developer.projects
+    # if params[:developer_id]
+    #   @developer = Developer.find_by(params[:developer_id])
+    #   @developer.projects
+    # end
     render json: @projects, except: [:created_at, :updated_at]
   end
 
