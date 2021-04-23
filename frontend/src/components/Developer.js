@@ -1,5 +1,7 @@
+let allDevelopers;
+
 class Developer {
-    constructor(id, dev_name) {
+        constructor(id, dev_name) {
         this.id = id
         this.dev_name = dev_name
     }
@@ -7,6 +9,7 @@ class Developer {
     static getDeveloper() {
         fetch('http://localhost:3000/developers')
         .then((response) => response.json())
+        .then(developers => allDevelopers = developers)
         .then(developers => {
             console.log(developers)
             // we do something with the fetched data: 
@@ -18,18 +21,16 @@ class Developer {
                     )
                     d.renderDeveloper()
                 }
-        })
+       }).then(console.log(allDevelopers))
     }
-
-    get devProject() { //ERROR: not defined - scope issue?
-        Projects.all.filter((p) => p.developer_id == this.id)
-    }
-
+   
     projectAppend() {
         let projectsContainer = document.getElementById('projects-container')
         let projectsDiv = document.getElementsByClassName('proj-div')
         projectsContainer.appendChild(projectsDiv)
     }
+
+   
 
     // render developer instance to DOM
     renderDeveloper() {
@@ -39,27 +40,86 @@ class Developer {
         devDiv.id = `${this.id}`
         devDiv.innerHTML +=
             ` 
-            <button data-id=${devDiv.id}>Welcome back, ${this.dev_name}!</button>
+            <button data-id=${devDiv.id} class="dev-btn">Welcome back, ${this.dev_name}!</button>
             `
         developerDiv.appendChild(devDiv)
 
-        devDiv.addEventListener('click', this.devProjects)
+        devDiv.addEventListener('click', (event) => {
+            // iterate over all developers and for each developer render all their projects
+            console.log(event) 
+            console.log("inside devDiv aka button's parent element")
+            
+            let devBtn = event.target.className
+            if(devBtn === "dev-btn") {
+                console.log(`inside devBtn ${this.id}` )
+                let projectsContainer = document.getElementById('projects-container')
+                projectsContainer.innerHTML = ""
+                allDevelopers.forEach(d => {
+                    let projects = d.projects
+                })
+
+
+
+
+
+
+
+
+
+
+
+                
+                // once this button is clicked and triggered the event,
+                // all of the projects belonging to the specific developer
+                // should render onto the DOM in the "project container".
+                
+            //    this.devProject.forEach(i => {
+            //                 i.projectAppend()
+            //     })
+                
+                // the form to create a project should also create with 
+                // the  appropriate developer ID.
+            
+            }
+        }) 
     }
 
-    devProjects() {
-        console.log("inside devProjects")
-        let projectsContainer = document.getElementById('projects-container')
-        projectsContainer.innerHTML = ""
-        // in category.js, there is a getter method written called items that filters through Item.all,
-        //  to select ones with a given category_id. this  would be a category object. 
-        // so this.items would return all of the items for "this" category
-       for(const project of devProject) {
-           project.projectAppend()
-       }
-        // devProject.forEach(i => {
-        //     i.projectAppend()
-        // })
-        debugger
-        // alert(project.message)
+    get devProject() { //ERROR: not defined - scope issue?
+        return Projects.all.filter(p => {p.developer_id == this.id})
     }
+
+    // let projectsContainer = document.getElementById('projects-container')
+                // projectsContainer.innerHTML = ""
+
+    //     // in category.js, there is a getter method written called items that filters through Item.all,
+            //     //  to select ones with a given category_id. this  would be a category object. 
+            //     // so this.items would return all of the items for "this" category
+            // //    for(const project of devProject) {
+            // //        project.projectAppend()
+            // //    }
+            //     this.devProject.forEach(i => {
+            //         i.projectAppend()
+            //     })
+
+    // devProjects(event) {
+    //     console.log(event)
+    //     let devBtn = event.target.classname
+    //     if(devBtn === "dev-btn") {
+
+    //         console.log("inside devProjects")
+    //         let projectsContainer = document.getElementById('projects-container')
+    //         projectsContainer.innerHTML = ""
+    //         // in category.js, there is a getter method written called items that filters through Item.all,
+    //         //  to select ones with a given category_id. this  would be a category object. 
+    //         // so this.items would return all of the items for "this" category
+    //     //    for(const project of devProject) {
+    //     //        project.projectAppend()
+    //     //    }
+    //         // devProject.forEach(i => {
+    //         //     i.projectAppend()
+    //         // })
+    //     }
+    //     // debugger
+    //     // alert(project.message)
+    // }
 }
