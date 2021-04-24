@@ -55,7 +55,11 @@ class Developer {
                 let projectsContainer = document.getElementById('projects-container')
                 projectsContainer.innerHTML = ""
                 allDevelopers.forEach(d => {
-                    let projects = d.projects
+                    if (d.id == this.id) {
+                        let projects = d.projects
+                        let projectsContainer = document.getElementById('projects-container')
+                        projectsContainer.append(projects)
+                    }
                 })
 
 
@@ -68,7 +72,7 @@ class Developer {
 
 
 
-                
+
                 // once this button is clicked and triggered the event,
                 // all of the projects belonging to the specific developer
                 // should render onto the DOM in the "project container".
