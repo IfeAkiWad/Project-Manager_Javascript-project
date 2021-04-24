@@ -56,6 +56,7 @@ class Developer {
                 projectsContainer.innerHTML = ""
                 allDevelopers.forEach(d => {
                     if (d.id == this.id) {
+                        console.log(d.projects[0])
                         let projects = d.projects
                         let projectsContainer = document.getElementById('projects-container')
                         projectsContainer.append(projects)
