@@ -40,6 +40,7 @@ class Developer {
         devDiv.id = `${this.id}`
         devDiv.innerHTML +=
             ` 
+            <h5>Is this you?</h5>
             <button data-id=${devDiv.id} class="dev-btn">Welcome back, ${this.dev_name}!</button>
             `
         developerDiv.appendChild(devDiv)
@@ -58,8 +59,17 @@ class Developer {
                     if (d.id == this.id) {
                         console.log(d.projects[0])
                         let projects = d.projects
-                        projects.forEach(p => {
-                            console.log(p.name, p.started, p.deadline, p.description    )
+                        projects.forEach(proj => {
+                            console.log(proj.name, proj.started, proj.deadline, proj.description, proj.developer_id)
+                            let p = new Projects(
+                                proj.id, 
+                                proj.name, 
+                                proj.started, 
+                                proj.deadline, 
+                                proj.description,
+                                proj.developer_id
+                            )
+                             p.renderProject()
                         })
                         // let projectsArray = Object.values(projects);
                         // console.log(projectsArray)

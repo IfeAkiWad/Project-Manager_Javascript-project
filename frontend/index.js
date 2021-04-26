@@ -1,9 +1,9 @@
-document.addEventListener('DOMContentLoaded', () => { //fires when the initial HTML document has been completely loaded and parsed without being slowed down by images and stylesheets, etc.
+// document.addEventListener('DOMContentLoaded', () => { //fires when the initial HTML document has been completely loaded and parsed without being slowed down by images and stylesheets, etc.
     Developer.getDeveloper()
     Projects.getAllProjects()
     newProjectForm()
     Projects.deleteProject()
-})
+// })
 
 // BELOW HANDLES ALL THAT PERTAINS TO NEW PROJECT FORM
 function newProjectForm() {
@@ -11,7 +11,7 @@ function newProjectForm() {
     
     projectForm.innerHTML +=
     `
-    <form id='form'>
+    <form id='form'> 
     <h2 id="form-header"> Manage a new project! </h2><br>
     <label for="name">Project Name:</label>
     <input type="text" class="name" id="name" required><br><br>
@@ -21,6 +21,11 @@ function newProjectForm() {
     <input type="date" class="deadline" id="deadline" required><br><br>
     <label for="description">Project Description:</label><br><br>
     <textarea id="description" required></textarea><br><br>
+    <select name="developer" id="developer" required>
+                    <option name="developer_id">Who are you?</option>
+                    <option name="developer_id" value="13">Mary Jenkins</option>
+                    <option name="developer_id" value="14">Billy Thornton</option>                   
+    </select><br><br>
     <input type="submit" class="submit" value="New Project">
     <br><br>
     </form>
@@ -35,14 +40,16 @@ function submitProjectForm(event) {
     let started = document.getElementById("started").value
     let deadline = document.getElementById("deadline").value
     let description = document.getElementById("description").value
+    let developer = document.getElementById("developer").value
 
-    console.log(name, started, deadline, description)
+    console.log(name, started, deadline, description, developer)
     
     let project = {
         name: name, 
         started: started,
         deadline: deadline,
-        description: description
+        description: description,
+        developer: developer
     };
 
     // once form submitted => fetch post request to backend
