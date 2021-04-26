@@ -50,7 +50,7 @@ label {
 
 }
 
-.submit {
+.submit, .dev-btn {
     background-color: #21374d ;
     color: azure;
     font-size: 14px;

@@ -40,7 +40,6 @@ class Developer {
         devDiv.id = `${this.id}`
         devDiv.innerHTML +=
             ` 
-            <h5>Is this you?</h5>
             <button data-id=${devDiv.id} class="dev-btn">Welcome back, ${this.dev_name}!</button>
             `
         developerDiv.appendChild(devDiv)
