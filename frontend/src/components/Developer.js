@@ -58,8 +58,14 @@ class Developer {
                     if (d.id == this.id) {
                         console.log(d.projects[0])
                         let projects = d.projects
-                        let projectsContainer = document.getElementById('projects-container')
-                        projectsContainer.append(projects)
+                        projects.forEach(p => {
+                            console.log(p.name, p.started, p.deadline, p.description    )
+                        })
+                        // let projectsArray = Object.values(projects);
+                        // console.log(projectsArray)
+                        // let projectsContainer = document.getElementById('projects-container')
+                        // projectsContainer.innerHTML = projectsArray
+                        // projectsContainer.append(projects)
                     }
                 })
 
