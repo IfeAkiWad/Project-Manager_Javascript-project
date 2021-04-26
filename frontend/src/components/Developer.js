@@ -40,7 +40,7 @@ class Developer {
         devDiv.id = `${this.id}`
         devDiv.innerHTML +=
             ` 
-            <button data-id=${devDiv.id} class="dev-btn">Welcome back, ${this.dev_name}!</button>
+            <button data-id=${devDiv.id} class="dev-btn">Are you ${this.dev_name}?</button>
             `
         developerDiv.appendChild(devDiv)
 
@@ -52,11 +52,15 @@ class Developer {
             let devBtn = event.target.className
             if(devBtn === "dev-btn") {
                 console.log(`inside devBtn ${this.id}` )
+                alert(`Welcome back, ${this.dev_name}`)
+                let devName = document.getElementById("dev-name")
+                devName.innerHTML = ""
+                devName.innerHTML += `Your projects, ${this.dev_name}`
                 let projectsContainer = document.getElementById('projects-container')
                 projectsContainer.innerHTML = ""
                 allDevelopers.forEach(d => {
                     if (d.id == this.id) {
-                        console.log(d.projects[0])
+                        // console.log(d.projects[0])
                         let projects = d.projects
                         projects.forEach(proj => {
                             console.log(proj.name, proj.started, proj.deadline, proj.description, proj.developer_id)
