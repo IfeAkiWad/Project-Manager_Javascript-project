@@ -70,76 +70,9 @@ class Developer {
                             )
                              p.renderProject()
                         })
-                        // let projectsArray = Object.values(projects);
-                        // console.log(projectsArray)
-                        // let projectsContainer = document.getElementById('projects-container')
-                        // projectsContainer.innerHTML = projectsArray
-                        // projectsContainer.append(projects)
                     }
                 })
-
-
-
-
-
-
-
-
-
-
-
-
-                // once this button is clicked and triggered the event,
-                // all of the projects belonging to the specific developer
-                // should render onto the DOM in the "project container".
-                
-            //    this.devProject.forEach(i => {
-            //                 i.projectAppend()
-            //     })
-                
-                // the form to create a project should also create with 
-                // the  appropriate developer ID.
-            
             }
-        }) 
+        })
     }
-
-    get devProject() { //ERROR: not defined - scope issue?
-        return Projects.all.filter(p => {p.developer_id == this.id})
-    }
-
-    // let projectsContainer = document.getElementById('projects-container')
-                // projectsContainer.innerHTML = ""
-
-    //     // in category.js, there is a getter method written called items that filters through Item.all,
-            //     //  to select ones with a given category_id. this  would be a category object. 
-            //     // so this.items would return all of the items for "this" category
-            // //    for(const project of devProject) {
-            // //        project.projectAppend()
-            // //    }
-            //     this.devProject.forEach(i => {
-            //         i.projectAppend()
-            //     })
-
-    // devProjects(event) {
-    //     console.log(event)
-    //     let devBtn = event.target.classname
-    //     if(devBtn === "dev-btn") {
-
-    //         console.log("inside devProjects")
-    //         let projectsContainer = document.getElementById('projects-container')
-    //         projectsContainer.innerHTML = ""
-    //         // in category.js, there is a getter method written called items that filters through Item.all,
-    //         //  to select ones with a given category_id. this  would be a category object. 
-    //         // so this.items would return all of the items for "this" category
-    //     //    for(const project of devProject) {
-    //     //        project.projectAppend()
-    //     //    }
-    //         // devProject.forEach(i => {
-    //         //     i.projectAppend()
-    //         // })
-    //     }
-    //     // debugger
-    //     // alert(project.message)
-    // }
 }
