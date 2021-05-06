@@ -21,18 +21,19 @@ class Developer {
                     )
                     d.renderDeveloper()
                 }
-       }).then(console.log(allDevelopers))
+       })
+    //    .then(console.log(allDevelopers))
     }
    
-    projectAppend() {
-        let projectsContainer = document.getElementById('projects-container')
-        let projectsDiv = document.getElementsByClassName('proj-div')
-        projectsContainer.appendChild(projectsDiv)
-    }
+    // projectAppend() {
+    //     let projectsContainer = document.getElementById('projects-container')
+    //     let projectsDiv = document.getElementsByClassName('proj-div')
+    //     projectsContainer.appendChild(projectsDiv)
+    // }
 
    
 
-    // render developer instance to DOM
+// RENDER DEVELOPER INSTANCE ONTO DOM
     renderDeveloper() {
         let developerDiv = document.getElementById("developer-container")
         let devDiv = document.createElement("div")
@@ -44,6 +45,7 @@ class Developer {
             `
         developerDiv.appendChild(devDiv)
 
+        //DEVELOPER ID BUTTON
         devDiv.addEventListener('click', (event) => {
             // iterate over all developers and for each developer render all their projects
             console.log(event) 
@@ -63,7 +65,7 @@ class Developer {
                         // console.log(d.projects[0])
                         let projects = d.projects
                         projects.forEach(proj => {
-                            console.log(proj.name, proj.started, proj.deadline, proj.description, proj.developer_id)
+                            // console.log(proj.name, proj.started, proj.deadline, proj.description, proj.developer_id)
                             let p = new Projects(
                                 proj.id, 
                                 proj.name, 
@@ -77,6 +79,48 @@ class Developer {
                     }
                 })
             }
+
         })
     }
+
+    //PROJECT SEARCH BAR FOR DEVELOPER
+    static projectSearch() {
+        let searchBar = document.getElementById('search')
+        searchBar.innerHTML += 
+        `
+            <input type="text" class="search-input" placeholder="Search..">
+            <button type="submit" class="submit">Submit</button>
+        `
+        searchBar.addEventListener('click', (event) => {
+            console.log(event)
+            let projectsContainer = document.getElementById('projects-container')
+            projectsContainer.innerHTML = ""
+            const searchInput = document.getElementsByClassName("search-input")
+            let searchTerm = searchInput.value.split(" ").join("+")
+
+        })
+    }   
+    
 }
+
+
+
+// searchBar.addEventListener('click', (handleSearchSubmit) => {
+//     console.log(event)
+//     let searchField = event.target.className
+//         if(searchField === "search-input") {
+//             console.log('inside search field')
+//             const searchInput = document.getElementsByClassName("search-input")
+//             let searchTerm = searchInput.value
+//         }
+//     // let submitBtn = event.target.className
+//     // if(submitBtn === "submit") {
+//     //     console.log('this is the submit button')
+//     //     // let projectsContainer = document.getElementById('projects-container')
+//     //     // projectsContainer.innerHTML = ""
+        
+//     // }
+
+
+
+// })

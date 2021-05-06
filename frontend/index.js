@@ -3,6 +3,7 @@
     Projects.getAllProjects()
     newProjectForm()
     Projects.deleteProject()
+    Developer.projectSearch()
 // })
 
 // BELOW HANDLES ALL THAT PERTAINS TO NEW PROJECT FORM
@@ -60,9 +61,10 @@ function submitProjectForm(event) {
             'Content-Type': 'application/json',
             'Accept': 'application/json'
         },
-        body: JSON.stringify(project)
+        body: JSON.stringify(project) //converts javascript objects into strings.
+        
     
-    })
+    }) //consuming code: waiting on promise to be fulfilled
     .then(response => response.json())
     .then(project => {
         const {id, name, started, deadline, description, developer_id} = project
