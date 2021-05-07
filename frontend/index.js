@@ -3,7 +3,7 @@
     Projects.getAllProjects()
     newProjectForm()
     Projects.deleteProject()
-    Developer.projectSearch()
+    projectSearch()
 // })
 
 // BELOW HANDLES ALL THAT PERTAINS TO NEW PROJECT FORM
@@ -36,7 +36,7 @@ function newProjectForm() {
 }
 
 function submitProjectForm(event) {
-    event.preventDefault();
+    event.preventDefault(); //prevents post request from being submitted
     let name = document.getElementById("name").value
     let started = document.getElementById("started").value
     let deadline = document.getElementById("deadline").value
@@ -77,5 +77,67 @@ function submitProjectForm(event) {
     started = document.getElementById("started").value = ""
     deadline = document.getElementById("deadline").value = ""
     description = document.getElementById("description").value = ""
+}
+
+//PROJECT SEARCH BAR FOR DEVELOPER
+function projectSearch() {
+    let searchBar = document.getElementById('search')
+    searchBar.innerHTML += 
+    `
+        <input type="text" id="search-input" placeholder="Search..">
+        <button type="submit" id="submitBtn">Submit</button>
+    `
+    const submitBtn = document.getElementById("submitBtn")
+    
+    submitBtn.addEventListener('click', handleSearch)
+        
+}    
+        
+function handleSearch(event) {
+    console.log(event)
+    const searchInput = document.getElementById("search-input")
+        
+    let projectsContainer = document.getElementById('projects-container')
+    if(searchInput.value != "") {
+        projectsContainer.innerHTML = ""
+    }
+    
+    let searchTerm = searchInput.value.split(" ").join("+")
+    if(searchTerm != "") {
+        makeApiCall(searchTerm)
+    }
+}
+    
+function makeApiCall(searchTerm) {
+    console.log(searchTerm)
+    fetch(`http://localhost:3000/projects?q=` + searchTerm)
+    .then(response => response.json())
+    .then(result => addSearchToDom(result))
+}
+
+function addSearchToDom(response) {
+    console.log(response)
+    let search = response
+    let nameSearch = search.map(i => {
+        return i.name
+    })
+
+    if (nameSearch == response.name) {
+        response.forEach(proj => {
+            let p = new Projects(
+                proj.id, 
+                proj.name, 
+                proj.started, 
+                proj.deadline, 
+                proj.description,
+                proj.developer_id
+            )
+             p.renderProject()
+        })
+    }
+    // nameSearch.forEach(name => {
+    //     let projectsContainer = document.getElementById('projects-container')
+    //     name.renderProject()
+    // })
 }
 

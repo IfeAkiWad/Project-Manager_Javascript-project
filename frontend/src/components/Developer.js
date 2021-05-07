@@ -83,24 +83,52 @@ class Developer {
         })
     }
 
-    //PROJECT SEARCH BAR FOR DEVELOPER
-    static projectSearch() {
-        let searchBar = document.getElementById('search')
-        searchBar.innerHTML += 
-        `
-            <input type="text" class="search-input" placeholder="Search..">
-            <button type="submit" class="submit">Submit</button>
-        `
-        searchBar.addEventListener('click', (event) => {
-            console.log(event)
-            let projectsContainer = document.getElementById('projects-container')
-            projectsContainer.innerHTML = ""
-            const searchInput = document.getElementsByClassName("search-input")
-            let searchTerm = searchInput.value.split(" ").join("+")
+    // //PROJECT SEARCH BAR FOR DEVELOPER
+    // static projectSearch() {
+    //     let searchBar = document.getElementById('search')
+    //     searchBar.innerHTML += 
+    //     `
+    //         <input type="text" id="search-input" placeholder="Search..">
+    //         <button type="submit" id="submitBtn">Submit</button>
+    //     `
+    //     const submitBtn = document.getElementById("submitBtn")
+        
+    //     submitBtn.addEventListener('click', (event) => {
+    //         console.log(event)
+    //         const searchInput = document.getElementById("search-input")
+            
+    //         let projectsContainer = document.getElementById('projects-container')
+    //         if(searchInput.value != "") {
+    //             projectsContainer.innerHTML = ""
+    //         }
+            
+    //         let searchTerm = searchInput.value.split(" ").join("+")
+    //         if(searchTerm != "") {
+    //             fetch(`http://localhost:3000/projects?q=` + searchTerm)
+    //             .then(response => response.json())
+    //             .then(result => {
+    //                 console.log(result)
 
-        })
-    }   
+    //             })
+    //         }
+    //     })
+            
+
     
+    // }   
+
+    // handleSearch(event) {
+    //     console.log(event)
+    //         let projectsContainer = document.getElementById('projects-container')
+    //         projectsContainer.innerHTML = ""
+    //         const searchInput = document.getElementById("search-input")
+    //         let searchTerm = searchInput.value.split(" ").join("+")
+    //         makeApiCall(searchTerm)
+    // }
+    
+    // makeApiCall(searchTerm) {
+    //     console.log(searchTerm)
+    // }
 }
 
 
