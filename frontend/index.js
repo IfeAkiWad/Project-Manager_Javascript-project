@@ -123,6 +123,7 @@ function addSearchToDom(response) {
     })
 
     if (nameSearch == response.name) {
+        // NOT WORKING ⬇️
         response.forEach(proj => {
             let p = new Projects(
                 proj.id, 
