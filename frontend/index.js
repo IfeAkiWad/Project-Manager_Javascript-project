@@ -95,7 +95,8 @@ function projectSearch() {
         
 function handleSearch(event) {
     console.log(event)
-    const searchInput = document.getElementById("search-input")
+    console.log('inside handleSearch method')
+    const searchInput = document.getElementById("search-input") //input field
         
     let projectsContainer = document.getElementById('projects-container')
     if(searchInput.value != "") {
@@ -107,35 +108,78 @@ function handleSearch(event) {
         makeApiCall(searchTerm)
     }
 }
-    
+
+let allProjects
 function makeApiCall(searchTerm) {
     console.log(searchTerm)
+    console.log('making API call')
     fetch(`http://localhost:3000/projects?q=` + searchTerm)
     .then(response => response.json())
+    .then(projects => allProjects = projects)
     .then(result => addSearchToDom(result))
 }
 
 function addSearchToDom(response) {
+    console.log('ready to add to DOM')
     console.log(response)
     let search = response
     let nameSearch = search.map(i => {
         return i.name
     })
+    console.log(nameSearch)
+    let projectNames = Projects.all.map(i => {
+        return i.name 
+    })
 
-    if (nameSearch == response.name) {
+    allProjects.forEach(p => {
+        if (p.name == nameSearch) {
+            let projects = p
+            projects.forEach(proj => {
+                let p = new Projects(
+                    proj.id, 
+                    proj.name, 
+                    proj.started, 
+                    proj.deadline, 
+                    proj.description,
+                    proj.developer_id
+                )
+                p.renderProject()
+            })
+        }
+    })
+    // if (search == projectNames) {
+    //     nameSearch.forEach(search => {
+    //         let p = new Projects(
+    //             search.id, 
+    //             search.name, 
+    //             search.started, 
+    //             search.deadline, 
+    //             search.description,
+    //             search.developer_id
+    //         )
+    //         p.renderProject()
+    //     })
+    // }
+    
+
+    // if (nameSearch === projectNames) {
         // NOT WORKING ⬇️
-        response.forEach(proj => {
-            let p = new Projects(
-                proj.id, 
-                proj.name, 
-                proj.started, 
-                proj.deadline, 
-                proj.description,
-                proj.developer_id
-            )
-             p.renderProject()
-        })
-    }
+        // response.forEach(proj => {
+        // //   console.log(proj.name, proj.started, proj.deadline, proj.description, proj.developer_id)
+        //     console.log('now comparing')
+        //     if (nameSearch === projectNames) {
+        //         let p = new Projects(
+        //             proj.id, 
+        //             proj.name, 
+        //             proj.started, 
+        //             proj.deadline, 
+        //             proj.description,
+        //             proj.developer_id
+        //         )
+        //         p.renderProject()
+        //     }
+        // })
+    // }
     // nameSearch.forEach(name => {
     //     let projectsContainer = document.getElementById('projects-container')
     //     name.renderProject()
