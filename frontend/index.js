@@ -80,11 +80,16 @@ function submitProjectForm(event) {
 }
 
 //PROJECT SEARCH BAR FOR DEVELOPER
+// let searchProjects = []
+let allProjects= []
+// const searchInput = document.getElementById("search-input") //input field
+// let searchTerm = searchInput.value.split(" ").join("+")
+
 function projectSearch() {
     let searchBar = document.getElementById('search')
     searchBar.innerHTML += 
     `
-        <input type="text" id="search-input" placeholder="Search..">
+        <input type="text" class="search-input" name="name" placeholder="Search Your Project..">
         <button type="submit" id="submitBtn">Submit</button>
     `
     const submitBtn = document.getElementById("submitBtn")
@@ -92,24 +97,23 @@ function projectSearch() {
     submitBtn.addEventListener('click', handleSearch)
         
 }    
-        
+
 function handleSearch(event) {
     console.log(event)
     console.log('inside handleSearch method')
-    const searchInput = document.getElementById("search-input") //input field
-        
-    let projectsContainer = document.getElementById('projects-container')
-    if(searchInput.value != "") {
-        projectsContainer.innerHTML = ""
-    }
+    const searchInput = document.getElementsByClass("search-input") //input field
     
-    let searchTerm = searchInput.value.split(" ").join("+")
-    if(searchTerm != "") {
-        makeApiCall(searchTerm)
-    }
+    //  let projectsContainer = document.getElementById('projects-container')
+    //  if(searchInput.value != "") {
+    //      projectsContainer.innerHTML = ""
+    //  }
+    
+     let searchTerm = searchInput.value.split(" ").join("+").toLowerCase()
+     if(searchTerm != "") {
+         makeApiCall(searchTerm)
+     }
 }
-
-let allProjects
+     
 function makeApiCall(searchTerm) {
     console.log(searchTerm)
     console.log('making API call')
@@ -118,43 +122,99 @@ function makeApiCall(searchTerm) {
     .then(projects => allProjects = projects)
     .then(result => addSearchToDom(result))
 }
-
+     
 function addSearchToDom(response) {
     console.log('ready to add to DOM')
     console.log(response)
+
     let search = response
     let nameSearch = search.map(i => {
         return i.name
     })
     console.log(nameSearch)
-    let projectNames = Projects.all.map(i => {
-        return i.name 
-    })
+     
+    //I'M STUCK HERE!
 
-    allProjects.forEach(p => {
-        if (p.name == nameSearch) {
-            let projects = p
-            projects.forEach(proj => {
-                let p = new Projects(
-                    proj.id, 
-                    proj.name, 
-                    proj.started, 
-                    proj.deadline, 
-                    proj.description,
-                    proj.developer_id
-                )
-                p.renderProject()
-            })
-        }
-    })
-    // if (search == projectNames) {
-    //     nameSearch.forEach(search => {
-    //         let p = new Projects(
-    //             search.id, 
-    //             search.name, 
-    //             search.started, 
-    //             search.deadline, 
-    //             search.description,
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    //     console.log('ready to add to DOM')
+    //     console.log(response)
+        
+    //     // const searchInput = document.getElementById("search-input") //input field
+    //     // let searchTerm = searchInput.value.split(" ").join("+")
+        
+        // let projectNames = Projects.all.map(i => {
+        //     return i.name 
+        // })
+    //     // console.log(projectNames)
+
+    //     // nameSearch.forEach(p => {
+    //     //     let projectsContainer = document.getElementById('projects-container')
+    //     //     projectsContainer.innerHTML += `${p}`
+    //     // })
+
+    //     allProjects.filter(p => {
+    //         const searchInput = document.getElementById("search-input") //input field
+    //         let searchTerm = searchInput.value.split(" ").join("+")
+            
+    //         if (p.name === searchTerm) {
+    //     //         let projects = p
+    //     //         projects.forEach(proj => {
+    //     //             let p = new Projects(
+    //     //                 proj.id, 
+    //     //                 proj.name, 
+    //     //                 proj.started, 
+    //     //                 proj.deadline, 
+    //     //                 proj.description,
+    //     //                 proj.developer_id
+    //     //             )
+    //                 return p.name
+                    
+    //     //         })
+    //         }
+    //         renderProject()
+    //     })
+    //     // if (search == projectNames) {
+    //     //     nameSearch.forEach(search => {
+    //     //         let p = new Projects(
+    //     //             search.id, 
+    //     //             search.name, 
+    //     //             search.started, 
+    //     //             search.deadline, 
+    //     //             search.description,
     //             search.developer_id
     //         )
     //         p.renderProject()
@@ -184,5 +244,5 @@ function addSearchToDom(response) {
     //     let projectsContainer = document.getElementById('projects-container')
     //     name.renderProject()
     // })
-}
+
 

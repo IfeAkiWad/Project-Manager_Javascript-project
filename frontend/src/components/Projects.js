@@ -46,7 +46,7 @@ class Projects {
         `
         <ul class="ul-project" id='project-${this.id}' data-id=${this.id} data-id=${this.developer_id}>
             <li data-id=${this.id} id="project">
-                <h2>Project Name: ${this.name}</h2>
+                <h2 class="project-name">Project Name: ${this.name}</h2>
                 <h3>Project Started: ${this.started}</h3>
                 <h3>Project deadline: ${this.deadline}</h3> 
                 <h4>Project Description:</h4>
