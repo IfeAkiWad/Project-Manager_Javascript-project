@@ -81,35 +81,33 @@ function submitProjectForm(event) {
 
 //PROJECT SEARCH BAR FOR DEVELOPER
 // let searchProjects = []
-let allProjects= []
+let allProjects = []
 // const searchInput = document.getElementById("search-input") //input field
 // let searchTerm = searchInput.value.split(" ").join("+")
 
 function projectSearch() {
     let searchBar = document.getElementById('search')
+    console.log(searchBar)
     searchBar.innerHTML += 
     `
-        <input type="text" class="search-input" name="name" placeholder="Search Your Project..">
+        <input type="text" id="search-input" placeholder="Search Your Project..">
         <button type="submit" id="submitBtn">Submit</button>
     `
     const submitBtn = document.getElementById("submitBtn")
-    
     submitBtn.addEventListener('click', handleSearch)
-        
+  
+
+    // console.log(searchTerm)
+    
+
 }    
 
 function handleSearch(event) {
     console.log(event)
     console.log('inside handleSearch method')
-    const searchInput = document.getElementsByClass("search-input") //input field
-    
-    //  let projectsContainer = document.getElementById('projects-container')
-    //  if(searchInput.value != "") {
-    //      projectsContainer.innerHTML = ""
-    //  }
-    
+    const searchInput = document.getElementById("search-input") //input field
      let searchTerm = searchInput.value.split(" ").join("+").toLowerCase()
-     if(searchTerm != "") {
+     if(searchTerm !== "") {
          makeApiCall(searchTerm)
      }
 }
@@ -119,20 +117,32 @@ function makeApiCall(searchTerm) {
     console.log('making API call')
     fetch(`http://localhost:3000/projects?q=` + searchTerm)
     .then(response => response.json())
-    .then(projects => allProjects = projects)
     .then(result => addSearchToDom(result))
 }
-     
+    //  console.log(allProjects)
+
+
 function addSearchToDom(response) {
     console.log('ready to add to DOM')
     console.log(response)
 
+    // let nameSearch = search.map(i => {
+    //     return i.name
+    // })
+    // console.log(nameSearch)
+    const searchInput = document.getElementById("search-input") //input field
+    let projectsContainer = document.getElementById('projects-container')
+    if(searchInput.value != "") {
+        projectsContainer.innerHTML = ""
+    }
+
+    let searchTerm = searchInput.value.split(" ").join("+").toLowerCase()
     let search = response
-    let nameSearch = search.map(i => {
-        return i.name
-    })
-    console.log(nameSearch)
-     
+    let filteredSearch = search.map(project => {
+            return project.name.includes(searchTerm)
+        })
+        console.log(filteredSearch)
+
     //I'M STUCK HERE!
 
 }
