@@ -138,8 +138,14 @@ function addSearchToDom(response) {
 
     let searchTerm = searchInput.value.split(" ").join("+").toLowerCase()
     let search = response
-    let filteredSearch = search.map(project => {
-            return project.name.includes(searchTerm)
+    let filteredSearch = search.forEach(project => {
+            if (project.name.includes(searchTerm)){
+                return project
+            }
+            // if(project.name == searchTerm) {
+            //     console.log('EUREKA!')
+            // }
+            // project.name.toLowerCase().includes(searchTerm)
         })
         console.log(filteredSearch)
 
