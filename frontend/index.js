@@ -82,6 +82,8 @@ function submitProjectForm(event) {
 //PROJECT SEARCH BAR FOR DEVELOPER
 // let searchProjects = []
 let allProjects = []
+let searchTerm
+let projectsContainer = document.getElementById("projects-container")
 // const searchInput = document.getElementById("search-input") //input field
 // let searchTerm = searchInput.value.split(" ").join("+")
 
@@ -93,8 +95,21 @@ function projectSearch() {
         <input type="text" id="search-input" placeholder="Search Your Project..">
         <button type="submit" id="submitBtn">Submit</button>
     `
-    const submitBtn = document.getElementById("submitBtn")
-    submitBtn.addEventListener('click', handleSearch)
+    // const submitBtn = document.getElementById("submitBtn")
+    // submitBtn.addEventListener('click', handleSearch)
+    let searchField = document.getElementById('search-input')
+    searchField.addEventListener('keyup', (event) => {
+        searchTerm = event.target.value.toLowerCase()
+        // console.log(searchTerm)
+        // let filteredProjects = allProjects.filter(project => {
+        //     return project.name.toLowerCase().includes(searchTerm)
+        // })
+        // console.log(allProjects)
+
+        if(searchTerm !== "") {
+            makeApiCall(searchTerm)
+        }
+    })
   
 
     // console.log(searchTerm)
@@ -102,56 +117,133 @@ function projectSearch() {
 
 }    
 
-function handleSearch(event) {
-    console.log(event)
-    console.log('inside handleSearch method')
-    const searchInput = document.getElementById("search-input") //input field
-     let searchTerm = searchInput.value.split(" ").join("+").toLowerCase()
-     if(searchTerm !== "") {
-         makeApiCall(searchTerm)
-     }
-}
+// function handleSearch(event) {
+//     console.log(event)
+//     console.log('inside handleSearch method')
+//     const searchInput = document.getElementById("search-input") //input field
+//      let searchTerm = searchInput.value.split(" ").join("+").toLowerCase()
+//      if(searchTerm !== "") {
+//          makeApiCall(searchTerm)
+//      }
+// }
      
-function makeApiCall(searchTerm) {
+function makeApiCall(searchTerm) { //(searchTerm) {
     console.log(searchTerm)
+    // console.log(filteredProjects)
     console.log('making API call')
-    fetch(`http://localhost:3000/projects?q=` + searchTerm)
-    .then(response => response.json())
-    .then(result => addSearchToDom(result))
+    fetch(`http://localhost:3000/projects`) //?q=` + searchTerm)
+    .then(response =>  response.json())
+    .then(result => allProjects = result)
+    .then(result => {
+        console.log(result)
+        let filteredProjects = allProjects.filter(project => {
+            return project.name.toLowerCase().includes(searchTerm)
+            
+        })
+        console.log(filteredProjects)
+        if(filteredProjects) {
+            // addSearchToDom(result)
+            addSearchToDom(filteredProjects)
+        }
+    })
 }
     //  console.log(allProjects)
 
 
-function addSearchToDom(response) {
+function addSearchToDom(filteredProject) { //(response) {
     console.log('ready to add to DOM')
-    console.log(response)
+    // console.log(response)
+    console.log(filteredProject)
+    let projectRender = filteredProject
+    .forEach(project => {
+        let p = new Projects(
+            project.id, 
+            project.name, 
+            project.started, 
+            project.deadline, 
+            project.description,
+            project.developer_id
+        )
+         p.renderProject()
+    })
+    if (searchTerm !== "") {
+        projectsContainer.innerHTML = ""
+    }
+    projectsContainer.append(projectRender)
+
+}
+
+
+
+
+
+    // console.log(projectsContainer.childNodes)
+    // const searchInput = document.getElementById("search-input") //input field
+    // let projectsContainer = document.getElementById('projects-container')
+//     let searchTerm = searchInput.value.split(" ").join("+").toLowerCase()
+//     if(searchInput.value != "") {
+//         projectsContainer.innerHTML = ""
+//     }
+
+//     let fetchedProjects = response
+//     fetchedProjects.map(project => {
+//         console.log(project)
+//     })
+   
+    // fetchedProjects.forEach(project => {
+    //     // console.log(project)
+    //     let projectName = project.name
+    //     if(projectName.includes(searchTerm)) {
+    //         let p = new Projects(
+    //             project.id, 
+    //             project.name, 
+    //             project.started, 
+    //             project.deadline, 
+    //             project.description, 
+    //             project.developer_id
+    //         )
+    //         p.renderProject()
+    //     }
+       
+        // let filteredProject = 
+        // if (project.name == searchTerm)
+        //     // let p = new Projects(
+        //     //     project.id, 
+        //     //     project.name, 
+        //     //     project.started, 
+        //     //     project.deadline, 
+        //     //     project.description, 
+        //     //     project.developer_id
+        //     // )
+        //     renderProject(searchTerm)
+    // })
 
     // let nameSearch = search.map(i => {
     //     return i.name
     // })
     // console.log(nameSearch)
-    const searchInput = document.getElementById("search-input") //input field
-    let projectsContainer = document.getElementById('projects-container')
-    if(searchInput.value != "") {
-        projectsContainer.innerHTML = ""
-    }
+    // const searchInput = document.getElementById("search-input") //input field
+    // let projectsContainer = document.getElementById('projects-container')
+    // if(searchInput.value != "") {
+    //     projectsContainer.innerHTML = ""
+    // }
 
-    let searchTerm = searchInput.value.split(" ").join("+").toLowerCase()
-    let search = response
-    let filteredSearch = search.forEach(project => {
-            if (project.name.includes(searchTerm)){
-                return project
-            }
-            // if(project.name == searchTerm) {
-            //     console.log('EUREKA!')
-            // }
-            // project.name.toLowerCase().includes(searchTerm)
-        })
-        console.log(filteredSearch)
+    // let searchTerm = searchInput.value.split(" ").join("+").toLowerCase()
+    // let search = response
+    // let filteredSearch = search.forEach(project => {
+    //         if (project.name.includes(searchTerm)){
+    //             return project
+    //         }
+    //         // if(project.name == searchTerm) {
+    //         //     console.log('EUREKA!')
+    //         // }
+    //         // project.name.toLowerCase().includes(searchTerm)
+    //     })
+    //     console.log(filteredSearch)
 
     //I'M STUCK HERE!
 
-}
+
 
 
 
