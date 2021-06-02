@@ -110,22 +110,8 @@ function projectSearch() {
             makeApiCall(searchTerm)
         }
     })
-  
-
     // console.log(searchTerm)
-    
-
 }    
-
-// function handleSearch(event) {
-//     console.log(event)
-//     console.log('inside handleSearch method')
-//     const searchInput = document.getElementById("search-input") //input field
-//      let searchTerm = searchInput.value.split(" ").join("+").toLowerCase()
-//      if(searchTerm !== "") {
-//          makeApiCall(searchTerm)
-//      }
-// }
      
 function makeApiCall(searchTerm) { //(searchTerm) {
     console.log(searchTerm)
@@ -171,15 +157,19 @@ function addSearchToDom(filteredProjects) { //(response) {
             p.renderProject()
         }
     })
-
-    // if (searchTerm !== "") {
-    //     projectsContainer.innerHTML = ""
-    // }
     projectsContainer.innerHTML = projectRender
 
 }
 
-
+// function handleSearch(event) {
+//     console.log(event)
+//     console.log('inside handleSearch method')
+//     const searchInput = document.getElementById("search-input") //input field
+//      let searchTerm = searchInput.value.split(" ").join("+").toLowerCase()
+//      if(searchTerm !== "") {
+//          makeApiCall(searchTerm)
+//      }
+// }
 
 
 
