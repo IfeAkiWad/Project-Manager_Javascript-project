@@ -150,26 +150,32 @@ function makeApiCall(searchTerm) { //(searchTerm) {
     //  console.log(allProjects)
 
 
-function addSearchToDom(filteredProject) { //(response) {
+function addSearchToDom(filteredProjects) { //(response) {
     console.log('ready to add to DOM')
     // console.log(response)
-    console.log(filteredProject)
-    let projectRender = filteredProject
-    .forEach(project => {
-        let p = new Projects(
-            project.id, 
-            project.name, 
-            project.started, 
-            project.deadline, 
-            project.description,
-            project.developer_id
-        )
-         p.renderProject()
+    console.log(filteredProjects)
+    let projectRender = filteredProjects
+    let projectsClass = Projects.all.filter(i => {
+        return i.name || i.id
     })
-    if (searchTerm !== "") {
-        projectsContainer.innerHTML = ""
-    }
-    projectsContainer.append(projectRender)
+    projectRender.forEach(project => {
+        if(project) { //.name == projectsClass && project.id == projectsClass) {
+            let p = new Projects(
+                project.id, 
+                project.name, 
+                project.started, 
+                project.deadline, 
+                project.description,
+                project.developer_id
+            )
+            p.renderProject()
+        }
+    })
+
+    // if (searchTerm !== "") {
+    //     projectsContainer.innerHTML = ""
+    // }
+    projectsContainer.innerHTML = projectRender
 
 }
 
