@@ -89,8 +89,7 @@ function projectSearch() {
     console.log(searchBar)
     searchBar.innerHTML += 
     `
-        <input type="text" id="search-input" placeholder="Search Your Project..">
-        <button type="submit" id="submitBtn">Submit</button>
+        <input type="text" id="search-input" placeholder="Search Your Project.." >
     `
    
     let searchField = document.getElementById('search-input')
@@ -121,6 +120,8 @@ function makeApiCall(searchTerm) { //(searchTerm) {
         if(filteredProjects) {
             // addSearchToDom(result)
             addSearchToDom(filteredProjects)
+            // let projectRender = filteredProjects
+            
         }
     })
 }
@@ -129,26 +130,60 @@ function makeApiCall(searchTerm) { //(searchTerm) {
 
 function addSearchToDom(filteredProjects) { //(response) {
     console.log('ready to add to DOM')
-    // console.log(response)
-    console.log(filteredProjects)
-    let projectRender = filteredProjects
-    let projectsClass = Projects.all.filter(i => {
-        return i.name || i.id
+//     // console.log(response)
+//     console.log(filteredProjects)
+    let renderProjects = filteredProjects
+//     let projectsClass = Projects.all.filter(i => {
+//         return i.name || i.id
+//     })
+
+    renderProjects.forEach( project => {
+        let p = new Projects(
+            project.id, 
+            project.name, 
+            project.started, 
+            project.deadline, 
+            project.description,
+            project.developer_id
+        )
+        p.renderProject()
     })
-    projectRender.forEach(project => {
-        if(project) { //.name == projectsClass && project.id == projectsClass) {
-            let p = new Projects(
-                project.id, 
-                project.name, 
-                project.started, 
-                project.deadline, 
-                project.description,
-                project.developer_id
-            )
-            p.renderProject()
-        }
-    })
-    projectsContainer.innerHTML = projectRender
+    projectsContainer.innerHTML = renderProjects
+
+
+
+
+
+
+
+
+
+    // projectRender.forEach(project => {
+    //     for(const x of project) {
+    //         let p = new Projects(
+    //             x.id, 
+    //             x.name, 
+    //             x.started, 
+    //             x.deadline, 
+    //             x.description,
+    //             x.developer_id
+    //         )
+    //         p.renderProject()
+    //     }
+    // })
+
+    // for(const project of projectRender) {
+    //     let p = new Projects(
+    //         project.id, 
+    //         project.name, 
+    //         project.started, 
+    //         project.deadline, 
+    //         project.description,
+    //         project.developer_id
+    //     )
+    //     p.renderProject()
+    // }
+    // projectsContainer.innerHTML = projectRender
 
 }
 
