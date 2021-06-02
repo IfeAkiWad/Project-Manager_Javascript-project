@@ -80,12 +80,9 @@ function submitProjectForm(event) {
 }
 
 //PROJECT SEARCH BAR FOR DEVELOPER
-// let searchProjects = []
 let allProjects = []
 let searchTerm
 let projectsContainer = document.getElementById("projects-container")
-// const searchInput = document.getElementById("search-input") //input field
-// let searchTerm = searchInput.value.split(" ").join("+")
 
 function projectSearch() {
     let searchBar = document.getElementById('search')
@@ -95,16 +92,10 @@ function projectSearch() {
         <input type="text" id="search-input" placeholder="Search Your Project..">
         <button type="submit" id="submitBtn">Submit</button>
     `
-    // const submitBtn = document.getElementById("submitBtn")
-    // submitBtn.addEventListener('click', handleSearch)
+   
     let searchField = document.getElementById('search-input')
     searchField.addEventListener('keyup', (event) => {
         searchTerm = event.target.value.toLowerCase()
-        // console.log(searchTerm)
-        // let filteredProjects = allProjects.filter(project => {
-        //     return project.name.toLowerCase().includes(searchTerm)
-        // })
-        // console.log(allProjects)
 
         if(searchTerm !== "") {
             makeApiCall(searchTerm)
@@ -160,6 +151,15 @@ function addSearchToDom(filteredProjects) { //(response) {
     projectsContainer.innerHTML = projectRender
 
 }
+
+// console.log(searchTerm)
+        // let filteredProjects = allProjects.filter(project => {
+        //     return project.name.toLowerCase().includes(searchTerm)
+        // })
+        // console.log(allProjects)
+
+ // const submitBtn = document.getElementById("submitBtn")
+    // submitBtn.addEventListener('click', handleSearch)
 
 // function handleSearch(event) {
 //     console.log(event)
