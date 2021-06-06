@@ -89,15 +89,18 @@ function projectSearch() {
     console.log(searchBar)
     searchBar.innerHTML += 
     `
-        <input type="text" id="search-input" placeholder="Search Your Project.." >
+        <input type="text" id="search-input" class="search" placeholder="Search Your Project.." >
     `
    
     let searchField = document.getElementById('search-input')
     searchField.addEventListener('keyup', (event) => {
+        console.log(event)
         searchTerm = event.target.value.toLowerCase()
 
-        if(searchTerm !== "") {
+        if(searchTerm !== "" && searchTerm == `${searchTerm}`) {
+            projectsContainer.innerHTML = ""
             makeApiCall(searchTerm)
+            
         }
     })
     // console.log(searchTerm)
@@ -105,7 +108,8 @@ function projectSearch() {
      
 function makeApiCall(searchTerm) { //(searchTerm) {
     console.log(searchTerm)
-    // console.log(filteredProjects)
+
+//     // console.log(filteredProjects)
     console.log('making API call')
     fetch(`http://localhost:3000/projects`) //?q=` + searchTerm)
     .then(response =>  response.json())
@@ -117,27 +121,26 @@ function makeApiCall(searchTerm) { //(searchTerm) {
             
         })
         console.log(filteredProjects)
-        if(filteredProjects) {
+        // if(filteredProjects) {
             // addSearchToDom(result)
             addSearchToDom(filteredProjects)
             // let projectRender = filteredProjects
             
-        }
+        // }
     })
 }
     //  console.log(allProjects)
 
-
 function addSearchToDom(filteredProjects) { //(response) {
     console.log('ready to add to DOM')
-//     // console.log(response)
-//     console.log(filteredProjects)
-    let renderProjects = filteredProjects
-//     let projectsClass = Projects.all.filter(i => {
-//         return i.name || i.id
-//     })
+    // let projectId = Projects.all.map( project => {
+    //     return project.id
+    // })
+    // console.log(projectId)
 
-    renderProjects.forEach( project => {
+    // projectsContainer.innerHTML = ""
+
+    filteredProjects.forEach( project => {
         let p = new Projects(
             project.id, 
             project.name, 
@@ -147,10 +150,58 @@ function addSearchToDom(filteredProjects) { //(response) {
             project.developer_id
         )
         p.renderProject()
+       
     })
-    projectsContainer.innerHTML = renderProjects
+   
+}
 
 
+
+
+
+
+
+//     // console.log(response)
+//     let projectsClass = Projects.all.filter(i => {
+//         return i.name || i.id
+//     })
+    // filteredProjects.forEach( project => {
+    //     // console.log(project)
+    //     // let renderProject = project
+    //     // renderProject.filter(proj => {
+            // let p = new Projects(
+            //     project.id, 
+            //     project.name, 
+            //     project.started, 
+            //     project.deadline, 
+            //     project.description,
+            //     project.developer_id
+            // )
+            // p.renderProject()
+    //     // })
+    //     projectsContainer.innerHTML = filteredProjects
+
+    // })
+    // projectsContainer.innerHTML = renderProject
+    // projectsContainer.innerHTML = ""
+    // let projList = document.getElementsByClassName("ul-project")
+    // filteredProjects.forEach( project => {
+    //     projList.textContent = project
+    //     console.log(projList)
+        // let projListArray = projList.toArray()
+        // console.log(projListArray)
+        // projListArray.forEach( li => {
+        //     let p = new Projects(
+        //         li.id, 
+        //         li.name, 
+        //         li.started, 
+        //         li.deadline, 
+        //         li.description,
+        //         li.developer_id
+        //     )
+        //         p.renderProject()
+        // })
+    // })
 
 
 
@@ -185,7 +236,7 @@ function addSearchToDom(filteredProjects) { //(response) {
     // }
     // projectsContainer.innerHTML = projectRender
 
-}
+// }
 
 // console.log(searchTerm)
         // let filteredProjects = allProjects.filter(project => {
