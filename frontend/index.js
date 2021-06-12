@@ -96,64 +96,99 @@ function projectSearch() {
     searchField.addEventListener('keyup', (event) => {
         console.log(event)
         searchTerm = event.target.value.toLowerCase()
+        
+        // console.log(developerId)
 
-        if(searchTerm !== "" && searchTerm == `${searchTerm}`) {
+        if(searchTerm !== "" && searchTerm == `${searchTerm}` ) {
             projectsContainer.innerHTML = ""
             makeApiCall(searchTerm)
             
         }
+        // console.log(projDevId === developerId)
+        
     })
-    // console.log(searchTerm)
 }    
      
 function makeApiCall(searchTerm) { //(searchTerm) {
     console.log(searchTerm)
+    // let projDevId = Projects.all.filter(p => {
+    //     return p.developer_id
+    // })
+    // let developerId = Developer.all.filter( d => {
+    //      return d.id === projDevId
+    // })
 
-//     // console.log(filteredProjects)
     console.log('making API call')
     fetch(`http://localhost:3000/projects`) //?q=` + searchTerm)
     .then(response =>  response.json())
     .then(result => allProjects = result)
     .then(result => {
         console.log(result)
+
+        // let developerId = Developer.filter( d => {
+        //     return d.id//.includes(searchTerm)
+        // })
+        // console.log(developerId)
+        
+
         let filteredProjects = allProjects.filter(project => {
-            return project.name.toLowerCase().includes(searchTerm)
+            return project.name.toLowerCase().includes(searchTerm) //&& project.developer_id
             
         })
         console.log(filteredProjects)
-        // if(filteredProjects) {
-            // addSearchToDom(result)
-            addSearchToDom(filteredProjects)
-            // let projectRender = filteredProjects
-            
-        // }
+        addSearchToDom(filteredProjects)        
     })
 }
-    //  console.log(allProjects)
 
 function addSearchToDom(filteredProjects) { //(response) {
     console.log('ready to add to DOM')
-    // let projectId = Projects.all.map( project => {
-    //     return project.id
-    // })
-    // console.log(projectId)
 
-    // projectsContainer.innerHTML = ""
-
-    filteredProjects.forEach( project => {
-        let p = new Projects(
-            project.id, 
-            project.name, 
-            project.started, 
-            project.deadline, 
-            project.description,
-            project.developer_id
-        )
-        p.renderProject()
-       
-    })
-   
+        filteredProjects.forEach( project => {
+            let p = new Projects(
+                project.id, 
+                project.name, 
+                project.started, 
+                project.deadline, 
+                project.description,
+                project.developer_id
+            )
+            p.renderProject() 
+    }) 
 }
+
+ /* currently the the project container does not reappend the project index after the search bar has been cleared. It requires a browser refresh
+    I have to find a way to show a relationship between the searched project and developer
+ */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

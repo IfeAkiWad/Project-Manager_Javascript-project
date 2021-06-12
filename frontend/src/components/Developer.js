@@ -1,9 +1,16 @@
 let allDevelopers;
+// let allProjects = []
+// // let searchTerm
+// let projectsContainer = document.getElementById("projects-container")
 
 class Developer {
+    static all = []
+
         constructor(id, dev_name) {
         this.id = id
         this.dev_name = dev_name
+
+        Developer.all.push(this)
     }
 
     static getDeveloper() {
@@ -58,7 +65,7 @@ class Developer {
                 let devName = document.getElementById("dev-name")
                 devName.innerHTML = ""
                 devName.innerHTML += `Your projects, ${this.dev_name}`
-                let projectsContainer = document.getElementById('projects-container')
+                // let projectsContainer = document.getElementById('projects-container')
                 projectsContainer.innerHTML = ""
                 allDevelopers.forEach(d => {
                     if (d.id == this.id) {
@@ -82,6 +89,88 @@ class Developer {
 
         })
     }
+}
+    // static projectSearch() {
+    //     let searchBar = document.getElementById('search')
+    //     console.log(searchBar)
+    //     searchBar.innerHTML += 
+    //     `
+    //         <input type="text" id="search-input" class="search" placeholder="Search Your Project.." >
+    //     `
+       
+    //     let searchField = document.getElementById('search-input')
+    //     searchField.addEventListener('keyup', (event) => {
+    //         console.log(event)
+    //         let searchTerm = event.target.value.toLowerCase()
+    
+    //         if(searchTerm !== "" && searchTerm == `${searchTerm}`) {
+    //             projectsContainer.innerHTML = ""
+    //             console.log(searchTerm)
+                
+    //             let filteredProjects = allDevelopers.filter( d => {
+    //                 return d.projects.name.toLowerCase().includes(searchTerm)
+    //             })
+    //             console.log(filteredProjects)
+
+    //             addSearchToDom(filteredProjects) 
+    //         }
+    //     })
+    // }    
+
+    // makeApiCall(searchTerm) {
+    //     console.log(searchTerm)
+    //     console.log('making API call')
+
+    //     let filteredProjects = allDevelopers.filter( d => {
+    //         return d.projects.name.toLowerCase().includes(searchTerm)
+    //     })
+    //     console.log(filteredProjects)
+
+    //     addSearchToDom(filteredProjects) 
+
+    // }
+         
+    // makeApiCall(searchTerm) { //(searchTerm) {
+    //     console.log(searchTerm)
+    
+    //     console.log('making API call')
+    //     fetch(`http://localhost:3000/projects`) //?q=` + searchTerm)
+    //     .then(response =>  response.json())
+    //     .then(result => allProjects = result)
+    //     .then(result => {
+    //         console.log(result)
+    
+    //         let developerId = Developer.filter( d => {
+    //             return d.id//.includes(searchTerm)
+    //         })
+    //         console.log(developerId)
+    
+    //         let filteredProjects = allProjects.filter(project => {
+    //             return project.name.toLowerCase().includes(searchTerm) //&& project.developer_id
+                
+    //         })
+    //         console.log(filteredProjects)
+    //         addSearchToDom(filteredProjects)        
+    //     })
+    // }
+    
+    // addSearchToDom(filteredProjects) { //(response) {
+    //     console.log('ready to add to DOM')
+    
+    //         filteredProjects.forEach( project => {
+    //             let p = new Projects(
+    //                 project.id, 
+    //                 project.name, 
+    //                 project.started, 
+    //                 project.deadline, 
+    //                 project.description,
+    //                 project.developer_id
+    //             )
+    //             p.renderProject() 
+    //     }) 
+    // }
+    
+
 
     // //PROJECT SEARCH BAR FOR DEVELOPER
     // static projectSearch() {
@@ -129,7 +218,7 @@ class Developer {
     // makeApiCall(searchTerm) {
     //     console.log(searchTerm)
     // }
-}
+
 
 
 
