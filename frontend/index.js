@@ -6,6 +6,8 @@
     projectSearch()
 // })
 
+let user //globally accessible to all files
+
 // BELOW HANDLES ALL THAT PERTAINS TO NEW PROJECT FORM
 function newProjectForm() {
     let projectForm = document.getElementById("project-form")
@@ -94,6 +96,7 @@ function projectSearch() {
    
     let searchField = document.getElementById('search-input')
     searchField.addEventListener('keyup', (event) => {
+        // debugger
         console.log(event)
         searchTerm = event.target.value.toLowerCase()
         
@@ -125,35 +128,35 @@ function makeApiCall(searchTerm) { //(searchTerm) {
     .then(result => {
         console.log(result)
 
-        // let developerId = Developer.filter( d => {
-        //     return d.id//.includes(searchTerm)
-        // })
-        // console.log(developerId)
-        
-
         let filteredProjects = allProjects.filter(project => {
-            return project.name.toLowerCase().includes(searchTerm) //&& project.developer_id
-            
+            if (project.developer_id == user.id) {
+                return project.name.toLowerCase().includes(searchTerm)//&& project.developer_id
+            }
         })
         console.log(filteredProjects)
+
+
         addSearchToDom(filteredProjects)        
     })
 }
 
 function addSearchToDom(filteredProjects) { //(response) {
+    
+
     console.log('ready to add to DOM')
 
         filteredProjects.forEach( project => {
-            let p = new Projects(
-                project.id, 
-                project.name, 
-                project.started, 
-                project.deadline, 
-                project.description,
-                project.developer_id
-            )
-            p.renderProject() 
-    }) 
+                let p = new Projects(
+                    project.id, 
+                    project.name, 
+                    project.started, 
+                    project.deadline, 
+                    project.description,
+                    project.developer_id
+                )
+                p.renderProject() 
+        })
+    
 }
 
  /* currently the the project container does not reappend the project index after the search bar has been cleared. It requires a browser refresh

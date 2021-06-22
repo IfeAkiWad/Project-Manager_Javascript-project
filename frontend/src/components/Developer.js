@@ -6,9 +6,10 @@ let allDevelopers;
 class Developer {
     static all = []
 
-        constructor(id, dev_name) {
+        constructor(id, dev_name, projects) {
         this.id = id
         this.dev_name = dev_name
+        this.projects = projects
 
         Developer.all.push(this)
     }
@@ -57,7 +58,7 @@ class Developer {
             // iterate over all developers and for each developer render all their projects
             console.log(event) 
             console.log("inside devDiv aka button's parent element")
-            
+            user = this //declared globally in index.js
             let devBtn = event.target.className
             if(devBtn === "dev-btn") {
                 console.log(`inside devBtn ${this.id}` )
