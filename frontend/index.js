@@ -84,7 +84,7 @@ function submitProjectForm(event) {
 //PROJECT SEARCH BAR FOR DEVELOPER
 let allProjects = []
 let searchTerm
-let projectsContainer = document.getElementById("projects-container")
+const projectsContainer = document.getElementById("projects-container")
 
 function projectSearch() {
     let searchBar = document.getElementById('search')
@@ -123,7 +123,7 @@ function makeApiCall(searchTerm) { //(searchTerm) {
 
     console.log('making API call')
     fetch(`http://localhost:3000/projects`) //?q=` + searchTerm)
-    .then(response =>  response.json())
+    .then(response => response.json())
     .then(result => allProjects = result)
     .then(result => {
         console.log(result)
@@ -156,7 +156,6 @@ function addSearchToDom(filteredProjects) { //(response) {
                 )
                 p.renderProject() 
         })
-    
 }
 
  /* currently the the project container does not reappend the project index after the search bar has been cleared. It requires a browser refresh
