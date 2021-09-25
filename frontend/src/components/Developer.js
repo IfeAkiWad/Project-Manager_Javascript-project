@@ -90,6 +90,8 @@ class Developer {
 
         })
     }
+
+    
 }
     // static projectSearch() {
     //     let searchBar = document.getElementById('search')

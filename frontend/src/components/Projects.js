@@ -91,6 +91,45 @@ class Projects {
         })  
     }  
 
-    
+    // static takingOverTheWorld() {
+    //     console.log('hello world')
+    //     let searchDiv = document.getElementById('search')
+    //     searchDiv.innerHTML += 
+    //     `
+    //     <button type="button" id="world-btn" class="proj-btn">take Over The World!</button>
+        
+    //     `
+    //     let worldBtn = document.getElementById('world-btn')
+    //     worldBtn.addEventListener('click', (e) => {
+    //         console.log(e)
+
+    //         let project = {
+    //             name: 'Take Over the world',
+    //             started: '12-23-99',
+    //             deadline: '1-1-00',
+    //             description: 'be a dictator',
+    //             developer_id: '1'
+    //         }
+
+    //         console.log(project)
+    //         fetch('http://localhost:3000/projects', { 
+    //             method: 'POST',
+    //             headers: {
+    //                 'Content-Type': 'application/json',
+    //                 'Accept': 'application/json'
+    //             },
+    //             body: JSON.stringify(project) //converts javascript objects into strings.
+                
+            
+    //         }) //consuming code: waiting on promise to be fulfilled
+    //         .then(response => response.json())
+    //         .then(project => {
+    //             const {id, name, started, deadline, description, developer_id} = project
+    //         let p = new Projects(id, name, started, deadline, description, developer_id)
+    //                 p.renderProject()
+    //         })
+
+    //     })
+    // }
 
 }

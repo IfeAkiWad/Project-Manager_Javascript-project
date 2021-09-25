@@ -1,10 +1,8 @@
-// document.addEventListener('DOMContentLoaded', () => { //fires when the initial HTML document has been completely loaded and parsed without being slowed down by images and stylesheets, etc.
     Developer.getDeveloper()
     Projects.getAllProjects()
     newProjectForm()
     Projects.deleteProject()
     projectSearch()
-// })
 
 let user //globally accessible to all files
 
@@ -96,33 +94,23 @@ function projectSearch() {
    
     let searchField = document.getElementById('search-input')
     searchField.addEventListener('keyup', (event) => {
-        // debugger
         console.log(event)
         searchTerm = event.target.value.toLowerCase()
         
-        // console.log(developerId)
-
         if(searchTerm !== "" && searchTerm == `${searchTerm}` ) {
             projectsContainer.innerHTML = ""
             makeApiCall(searchTerm)
             
         }
-        // console.log(projDevId === developerId)
         
     })
 }    
      
 function makeApiCall(searchTerm) { //(searchTerm) {
     console.log(searchTerm)
-    // let projDevId = Projects.all.filter(p => {
-    //     return p.developer_id
-    // })
-    // let developerId = Developer.all.filter( d => {
-    //      return d.id === projDevId
-    // })
-
+   
     console.log('making API call')
-    fetch(`http://localhost:3000/projects`) //?q=` + searchTerm)
+    fetch(`http://localhost:3000/projects`) 
     .then(response => response.json())
     .then(result => allProjects = result)
     .then(result => {
@@ -130,7 +118,7 @@ function makeApiCall(searchTerm) { //(searchTerm) {
 
         let filteredProjects = allProjects.filter(project => {
             if (project.developer_id == user.id) {
-                return project.name.toLowerCase().includes(searchTerm)//&& project.developer_id
+                return project.name.toLowerCase().includes(searchTerm)
             }
         })
         console.log(filteredProjects)
@@ -140,7 +128,7 @@ function makeApiCall(searchTerm) { //(searchTerm) {
     })
 }
 
-function addSearchToDom(filteredProjects) { //(response) {
+function addSearchToDom(filteredProjects) { 
     
 
     console.log('ready to add to DOM')
@@ -198,278 +186,6 @@ function addSearchToDom(filteredProjects) { //(response) {
 
 
 
-//     // console.log(response)
-//     let projectsClass = Projects.all.filter(i => {
-//         return i.name || i.id
-//     })
-    // filteredProjects.forEach( project => {
-    //     // console.log(project)
-    //     // let renderProject = project
-    //     // renderProject.filter(proj => {
-            // let p = new Projects(
-            //     project.id, 
-            //     project.name, 
-            //     project.started, 
-            //     project.deadline, 
-            //     project.description,
-            //     project.developer_id
-            // )
-            // p.renderProject()
-    //     // })
-    //     projectsContainer.innerHTML = filteredProjects
 
-    // })
-    // projectsContainer.innerHTML = renderProject
-    // projectsContainer.innerHTML = ""
-    // let projList = document.getElementsByClassName("ul-project")
-    // filteredProjects.forEach( project => {
-    //     projList.textContent = project
-    //     console.log(projList)
-        // let projListArray = projList.toArray()
-        // console.log(projListArray)
-        // projListArray.forEach( li => {
-        //     let p = new Projects(
-        //         li.id, 
-        //         li.name, 
-        //         li.started, 
-        //         li.deadline, 
-        //         li.description,
-        //         li.developer_id
-        //     )
-        //         p.renderProject()
-        // })
-    // })
-
-
-
-
-
-
-
-    // projectRender.forEach(project => {
-    //     for(const x of project) {
-    //         let p = new Projects(
-    //             x.id, 
-    //             x.name, 
-    //             x.started, 
-    //             x.deadline, 
-    //             x.description,
-    //             x.developer_id
-    //         )
-    //         p.renderProject()
-    //     }
-    // })
-
-    // for(const project of projectRender) {
-    //     let p = new Projects(
-    //         project.id, 
-    //         project.name, 
-    //         project.started, 
-    //         project.deadline, 
-    //         project.description,
-    //         project.developer_id
-    //     )
-    //     p.renderProject()
-    // }
-    // projectsContainer.innerHTML = projectRender
-
-// }
-
-// console.log(searchTerm)
-        // let filteredProjects = allProjects.filter(project => {
-        //     return project.name.toLowerCase().includes(searchTerm)
-        // })
-        // console.log(allProjects)
-
- // const submitBtn = document.getElementById("submitBtn")
-    // submitBtn.addEventListener('click', handleSearch)
-
-// function handleSearch(event) {
-//     console.log(event)
-//     console.log('inside handleSearch method')
-//     const searchInput = document.getElementById("search-input") //input field
-//      let searchTerm = searchInput.value.split(" ").join("+").toLowerCase()
-//      if(searchTerm !== "") {
-//          makeApiCall(searchTerm)
-//      }
-// }
-
-
-
-    // console.log(projectsContainer.childNodes)
-    // const searchInput = document.getElementById("search-input") //input field
-    // let projectsContainer = document.getElementById('projects-container')
-//     let searchTerm = searchInput.value.split(" ").join("+").toLowerCase()
-//     if(searchInput.value != "") {
-//         projectsContainer.innerHTML = ""
-//     }
-
-//     let fetchedProjects = response
-//     fetchedProjects.map(project => {
-//         console.log(project)
-//     })
-   
-    // fetchedProjects.forEach(project => {
-    //     // console.log(project)
-    //     let projectName = project.name
-    //     if(projectName.includes(searchTerm)) {
-    //         let p = new Projects(
-    //             project.id, 
-    //             project.name, 
-    //             project.started, 
-    //             project.deadline, 
-    //             project.description, 
-    //             project.developer_id
-    //         )
-    //         p.renderProject()
-    //     }
-       
-        // let filteredProject = 
-        // if (project.name == searchTerm)
-        //     // let p = new Projects(
-        //     //     project.id, 
-        //     //     project.name, 
-        //     //     project.started, 
-        //     //     project.deadline, 
-        //     //     project.description, 
-        //     //     project.developer_id
-        //     // )
-        //     renderProject(searchTerm)
-    // })
-
-    // let nameSearch = search.map(i => {
-    //     return i.name
-    // })
-    // console.log(nameSearch)
-    // const searchInput = document.getElementById("search-input") //input field
-    // let projectsContainer = document.getElementById('projects-container')
-    // if(searchInput.value != "") {
-    //     projectsContainer.innerHTML = ""
-    // }
-
-    // let searchTerm = searchInput.value.split(" ").join("+").toLowerCase()
-    // let search = response
-    // let filteredSearch = search.forEach(project => {
-    //         if (project.name.includes(searchTerm)){
-    //             return project
-    //         }
-    //         // if(project.name == searchTerm) {
-    //         //     console.log('EUREKA!')
-    //         // }
-    //         // project.name.toLowerCase().includes(searchTerm)
-    //     })
-    //     console.log(filteredSearch)
-
-    //I'M STUCK HERE!
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    //     console.log('ready to add to DOM')
-    //     console.log(response)
-        
-    //     // const searchInput = document.getElementById("search-input") //input field
-    //     // let searchTerm = searchInput.value.split(" ").join("+")
-        
-        // let projectNames = Projects.all.map(i => {
-        //     return i.name 
-        // })
-    //     // console.log(projectNames)
-
-    //     // nameSearch.forEach(p => {
-    //     //     let projectsContainer = document.getElementById('projects-container')
-    //     //     projectsContainer.innerHTML += `${p}`
-    //     // })
-
-    //     allProjects.filter(p => {
-    //         const searchInput = document.getElementById("search-input") //input field
-    //         let searchTerm = searchInput.value.split(" ").join("+")
-            
-    //         if (p.name === searchTerm) {
-    //     //         let projects = p
-    //     //         projects.forEach(proj => {
-    //     //             let p = new Projects(
-    //     //                 proj.id, 
-    //     //                 proj.name, 
-    //     //                 proj.started, 
-    //     //                 proj.deadline, 
-    //     //                 proj.description,
-    //     //                 proj.developer_id
-    //     //             )
-    //                 return p.name
-                    
-    //     //         })
-    //         }
-    //         renderProject()
-    //     })
-    //     // if (search == projectNames) {
-    //     //     nameSearch.forEach(search => {
-    //     //         let p = new Projects(
-    //     //             search.id, 
-    //     //             search.name, 
-    //     //             search.started, 
-    //     //             search.deadline, 
-    //     //             search.description,
-    //             search.developer_id
-    //         )
-    //         p.renderProject()
-    //     })
-    // }
-    
-
-    // if (nameSearch === projectNames) {
-        // NOT WORKING ⬇️
-        // response.forEach(proj => {
-        // //   console.log(proj.name, proj.started, proj.deadline, proj.description, proj.developer_id)
-        //     console.log('now comparing')
-        //     if (nameSearch === projectNames) {
-        //         let p = new Projects(
-        //             proj.id, 
-        //             proj.name, 
-        //             proj.started, 
-        //             proj.deadline, 
-        //             proj.description,
-        //             proj.developer_id
-        //         )
-        //         p.renderProject()
-        //     }
-        // })
-    // }
-    // nameSearch.forEach(name => {
-    //     let projectsContainer = document.getElementById('projects-container')
-    //     name.renderProject()
-    // })
 
 
