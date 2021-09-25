@@ -5,11 +5,6 @@ class ProjectsController < ApplicationController
   # GET /projects
   def index
     @projects = Project.all
-    # @projects = @developer.projects
-    # if @developer == params[:developer_id]
-    #   # @developer = Developer.find_by(params[:developer_id])
-    #   @projects = @developer.projects
-    # end
     render json: @projects, except: [:created_at, :updated_at]
   end
 
@@ -21,9 +16,11 @@ class ProjectsController < ApplicationController
   # POST /project
   def create #FIXED - OBJECT NOT SAVING: project id is nil, and developer_id is nil
     @project = @developer.projects.new(project_params)
+
     if @project.save
       render json: @project, status: :created, location: @project
     else
+      # binding.pry
       render json: @project.errors, status: :unprocessable_entity
     end
   end
@@ -40,7 +37,6 @@ class ProjectsController < ApplicationController
     end
 
     def set_developer
-      # @developer = Developer.find_by(params[:developer_id])
       @developer = Developer.find_by(params[:developer_id]) 
     end
 

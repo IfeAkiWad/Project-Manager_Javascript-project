@@ -3,6 +3,7 @@ class DevelopersController < ApplicationController
 
   # GET /developers
   def index
+    
     @developers = Developer.all
 
     render json: @developers, except: [:created_at, :updated_at], include: [:projects]
@@ -11,12 +12,14 @@ class DevelopersController < ApplicationController
   # GET /developers/1
   def show
     render json: @developer, include: [:projects], except: [:created_at, :updated_at]
+    byebug
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_developer
       @developer = Developer.find(params[:id])
+      
     end
 
     # Only allow a trusted parameter through.
