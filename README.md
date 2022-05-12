@@ -3,7 +3,17 @@
 Project Manager is a Rails backend/Javascript frontend to-do/organizer single page app.
 
 ## Description
+
 Project Manager helps with the organization of projects and tasks by giving the option to provide more details to each project created.
+
+## Features
+
+- [x] user verification
+- [x] Ability to create and delete a project task
+- [x] A form to store a new project task
+- [x] Search engine for quick project search
+- [x] Responsive design
+- [ ] Ability to update project task
 
 ## Installation
 
