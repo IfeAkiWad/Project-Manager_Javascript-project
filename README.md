@@ -11,7 +11,7 @@ Project Manager helps with the organization of projects and tasks by giving the 
 - [x] user verification
 - [x] Ability to create and delete a project task
 - [x] A form to store a new project task
-- [x] Search engine for quick project search
+- [x] Search filter for quick project search
 - [x] Responsive design
 - [ ] Ability to update project task
 
