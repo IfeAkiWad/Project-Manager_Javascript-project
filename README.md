@@ -2,6 +2,9 @@
 
 Project Manager is a Rails backend/Javascript frontend to-do/organizer single page app.
 
+## Description
+Project Manager helps with the organization of projects and tasks by giving the option to provide more details to each project created.
+
 ## Installation
 
 Run `bundle install` in the terminal to install all of the necessary gems in the backend.
